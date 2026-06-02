@@ -17,7 +17,7 @@ const lifecycle = [
   [
     "01",
     "Pre-bonded",
-    "Create a live promotion page, collect follows, comments, shares, opt-ins, and build visible community heat before the coin bonds.",
+    "Create a live promotion page, collect follows, comments, shares, opt-ins, and build visible community heat before the token bonds.",
   ],
   [
     "02",
@@ -39,9 +39,9 @@ const lifecycle = [
 const comparison = [
   {
     title: "Normal launchpads",
-    label: "Memecoin factory",
+    label: "Token factory",
     items: [
-      "Create a memecoin",
+      "Create a token",
       "Start trading",
       "Promote manually outside the platform",
       "Attention depends on socials and raids",
@@ -68,7 +68,7 @@ const comparison = [
 ];
 
 const preBondedFeatures = [
-  ["Live promotion page", "A public campaign page before the memecoin bonds."],
+  ["Live promotion page", "A public campaign page before the token bonds."],
   ["Follow and opt-in signals", "Users can watch the project and ask for updates before bonding."],
   ["Comments and shares", "The community can talk, react, and spread the launch before the curve becomes the only signal."],
   ["Official source", "Creators can show links, story, visuals, timing, and campaign details in one place."],
@@ -213,12 +213,12 @@ const faq = [
   {
     question: "What does pre-bonded mean?",
     answer:
-      "Pre-bonded is the stage before the memecoin bonds or graduates into the DEX stage. Projects can build a promotion page, collect follows, comments, shares, opt-ins, and community heat before the bonding curve becomes the main signal.",
+      "Pre-bonded is the stage before the token bonds or graduates into the DEX stage. Projects can build a promotion page, collect follows, comments, shares, opt-ins, and community heat before the bonding curve becomes the main signal.",
   },
   {
     question: "What does post-bonded mean?",
     answer:
-      "Post-bonded is the stage after the memecoin has bonded and moved into the wider market. Projects can keep competing through battles, sponsored prize pools, tournaments, squads, and monthly or quarterly points leagues.",
+      "Post-bonded is the stage after the token has bonded and moved into the wider market. Projects can keep competing through battles, sponsored prize pools, tournaments, squads, and monthly or quarterly points leagues.",
   },
   {
     question: "What does the heatmap show?",
@@ -355,7 +355,7 @@ function App() {
 
           <aside className="heroPanel" aria-label="Why MemeWarzone is different">
             <p className="panelKicker">North star</p>
-            <h2>Meme coins need more than a launch button.</h2>
+            <h2>Meme coins need more than a token button.</h2>
             <p>
               MemeWarzone helps meme coins build heat before bonding, then keep fighting for attention after bonding.
             </p>
@@ -389,8 +389,8 @@ function App() {
         </section>
 
         <section className="section" id="why-different" aria-labelledby="comparison-title">
-          <SectionHeading eyebrow="Why launch here?" title="Why launch here instead of another memecoin factory?">
-            Most meme launchpads help you create a memecoin and start trading. After that, creators still need promotion, community growth, activity loops, battle content, and recurring reasons for attention. MemeWarzone builds that campaign layer into the launchpad.
+          <SectionHeading eyebrow="Why launch here?" title="Why launch here instead of another token factory?">
+            Most meme launchpads help you create a token and start trading. After that, creators still need promotion, community growth, activity loops, battle content, and recurring reasons for attention. MemeWarzone builds that campaign layer into the launchpad.
           </SectionHeading>
           <div className="comparisonGrid">
             {comparison.map((card) => (
@@ -429,7 +429,7 @@ function App() {
 
         <section className="section" id="promotion" aria-labelledby="promotion-title">
           <SectionHeading eyebrow="Live promotion pages" title="The promotion page shows where the heat is building.">
-            Every pre-bonded campaign gets a live promotion page. Users can follow, opt in, comment, share, and interact before the memecoin bonds. The live heatmap turns that activity into a clear signal: which campaigns are getting attention before launch.
+            Every pre-bonded campaign gets a live promotion page. Users can follow, opt in, comment, share, and interact before the token bonds. The live heatmap turns that activity into a clear signal: which campaigns are getting attention before launch.
           </SectionHeading>
           <div className="splitPanel">
             <div className="promoMock card">
