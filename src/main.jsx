@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
-const appBaseUrl = "https://apps.memewar.zone";
+const appBaseUrl = "https://app.memewar.zone";
 const homeUrl = "https://memewar.zone";
 
 const navItems = [

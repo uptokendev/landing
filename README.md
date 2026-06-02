@@ -5,7 +5,7 @@ Standalone Vite + React landing page for `https://memewar.zone`.
 ## URLs
 
 - Landing/home/logo: `https://memewar.zone`
-- Launchpad/app CTAs: `https://apps.memewar.zone`
+- Launchpad/app CTAs: `https://app.memewar.zone`
 
 ## Install
 
