@@ -1,46 +1,13 @@
-# MemeWarzone Landing Page V2
+# MemeWarzone Landing Page - Final Build
 
-Standalone React/Vite landing page for `https://memewar.zone`.
+Standalone Vite + React landing page for `https://memewar.zone`.
 
-## What this V2 focuses on
+## URLs
 
-MemeWarzone is positioned as a meme coin launchpad that helps projects build attention before launch, graduate into the market, and keep fighting for visibility after graduation.
+- Landing/home/logo: `https://memewar.zone`
+- Launchpad/app CTAs: `https://apps.memewar.zone`
 
-The page now follows this journey:
-
-1. Hero - launch better, graduate louder
-2. Why MemeWarzone beats normal token factories
-3. Pre-grad / Prepare Mode
-4. Live promotion pages
-5. Deploy on BNB first
-6. Graduation and DEX stage
-7. Post-grad Arena
-8. Battles
-9. Sponsorship
-10. Battle Pools / Prediction Pools
-11. Monthly and quarterly seasonal leagues
-12. Chain expansion roadmap
-13. Rewards and fee flywheel
-14. FAQ
-15. Final CTA
-
-## Required assets
-
-The CSS expects these files:
-
-```text
-public/assets/hero/logo.png
-public/assets/hero/herobg.png
-```
-
-Copy them from the MemeBattles frontend assets if they are not already present in this repo.
-
-## Links
-
-- Logo points to `https://memewar.zone`
-- Launchpad CTAs point to `https://apps.memewar.zone`
-
-## Local build
+## Install
 
 ```powershell
 npm install
@@ -48,6 +15,22 @@ npm run build
 npm run dev
 ```
 
+## Required assets
+
+Copy these into the repo if they are not already present:
+
+```text
+public/assets/hero/logo.png
+public/assets/hero/herobg.png
+```
+
+## Final positioning
+
+MemeWarzone helps meme coins build heat before bonding, then keep fighting for attention after bonding.
+
 ## Notes
 
-Battle Pools are intentionally described as a planned/gated feature. Future chains are described as roadmap targets, not live-chain claims. Rewards and sponsorship copy avoids guaranteed-profit or guaranteed-reward language.
+- Terminology uses `pre-bonded` and `post-bonded` everywhere.
+- Sponsorship is positioned as sponsor-funded leagues, tournaments, and battles. It does not describe hidden placement or fake ranking.
+- Battle Pools are worded as a gated feature dependent on rules, eligibility, jurisdiction, and final platform configuration.
+- Recruiter Program and Squad Pool copy is clear, but still flexible enough for final contract/accounting configuration.

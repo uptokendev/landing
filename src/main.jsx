@@ -6,9 +6,9 @@ const appBaseUrl = "https://apps.memewar.zone";
 const homeUrl = "https://memewar.zone";
 
 const navItems = [
-  { label: "Pre-grad", href: "#pre-grad" },
+  { label: "Pre-bonded", href: "#pre-bonded" },
   { label: "Promotion", href: "#promotion" },
-  { label: "Arena", href: "#arena" },
+  { label: "Battles", href: "#battles" },
   { label: "Leagues", href: "#leagues" },
   { label: "Roadmap", href: "#roadmap" },
 ];
@@ -16,64 +16,73 @@ const navItems = [
 const lifecycle = [
   [
     "01",
-    "Pre-grad",
-    "Build attention before deployment with a live promotion page, follows, comments, shares, opt-ins, official links, and launch timing.",
+    "Pre-bonded",
+    "Create a live promotion page, collect follows, comments, shares, opt-ins, and build visible community heat before the coin bonds.",
   ],
   [
     "02",
-    "Deploy",
-    "Launch first on BNB through the MemeWarzone campaign system and bonding-curve phase.",
+    "Bond on BNB",
+    "Launch first on BNB through the MemeWarzone bonding curve and bring the early campaign heat into the launch moment.",
   ],
   [
     "03",
     "Graduate",
-    "Reach the graduation threshold and move into the DEX stage with public momentum already built.",
+    "Reach the bonding threshold and move into the wider market with public signals already attached to the campaign.",
   ],
   [
     "04",
-    "Post-grad",
-    "Keep fighting for visibility through battles, sponsorships, and monthly or quarterly seasonal leagues.",
+    "Post-bonded",
+    "Keep fighting for attention through battles, sponsored prize pools, tournaments, squads, and seasonal points leagues.",
   ],
 ];
 
 const comparison = [
   {
     title: "Normal launchpads",
-    label: "Token factory",
+    label: "Memecoin factory",
     items: [
-      "Create a token",
+      "Create a memecoin",
       "Start trading",
-      "Promote manually",
-      "Attention depends on outside socials",
-      "No built-in campaign page before launch",
-      "Little post-grad exposure",
-      "No recurring league system for graduated coins",
+      "Promote manually outside the platform",
+      "Attention depends on socials and raids",
+      "No live pre-bonded heatmap",
+      "Limited post-bonded competition",
+      "No recurring league system for platform activity",
     ],
   },
   {
     title: "MemeWarzone",
-    label: "Campaign engine",
+    label: "Campaign battlefield",
     featured: true,
     items: [
-      "Prepare a campaign before launch",
-      "Build a live promotion page",
-      "Collect follows, comments, shares, and opt-ins",
-      "Launch first on BNB",
-      "Graduate into DEX trading",
-      "Enter post-grad battles",
-      "Compete in monthly and quarterly seasonal leagues",
-      "Use labeled sponsorships for extra visibility",
+      "Build heat before bonding",
+      "Launch with a live promotion page",
+      "Track follows, comments, shares, opt-ins, and squad activity",
+      "Bond first on BNB",
+      "Keep competing after bonding",
+      "Enter money-backed project battles",
+      "Compete in monthly and quarterly points leagues",
+      "Let sponsors fund prize pools, not hidden placement",
     ],
   },
 ];
 
-const preGradFeatures = [
-  ["Live promotion page", "A public campaign page before the token deploys."],
-  ["Opt-ins and follows", "Users can follow the campaign and signal interest before deployment."],
-  ["Comments and sharing", "The community can react, comment, share, and help spread the launch."],
-  ["Launch readiness", "Creators prepare identity, socials, launch copy, timing, and community plans."],
-  ["Free marketing loop", "Every follow, share, comment, and opt-in gives the project more visibility before launch."],
-  ["Better discovery", "Traders can discover upcoming projects before the bonding curve opens."],
+const preBondedFeatures = [
+  ["Live promotion page", "A public campaign page before the memecoin bonds."],
+  ["Follow and opt-in signals", "Users can watch the project and ask for updates before bonding."],
+  ["Comments and shares", "The community can talk, react, and spread the launch before the curve becomes the only signal."],
+  ["Official source", "Creators can show links, story, visuals, timing, and campaign details in one place."],
+  ["Squad and recruiter push", "Growth from organized community action becomes part of the visible launch picture."],
+  ["Launch readiness", "Traders can see which campaigns are building attention before launch day."],
+];
+
+const heatmapFeatures = [
+  ["Follow heat", "Shows how many users are watching the project."],
+  ["Comment heat", "Shows whether the community is actually talking."],
+  ["Share heat", "Shows how much the launch is spreading."],
+  ["Opt-in heat", "Shows how many users want updates before bonding."],
+  ["Squad and recruiter heat", "Shows whether growth is coming from organized community push."],
+  ["Launch readiness heat", "Helps users see which projects are building real pre-bonded momentum."],
 ];
 
 const promotionFeatures = [
@@ -83,133 +92,173 @@ const promotionFeatures = [
   "Notification opt-in",
   "Comments",
   "Share actions",
+  "Live heatmap",
   "Launch timing",
-  "Recruiter and squad visibility",
-  "Community activity",
-  "Hot draft ranking",
+  "Recruiter and squad heat",
+  "Pre-bonded momentum",
 ];
 
 const deploymentCards = [
-  ["BNB first", "A fast, active, retail-friendly battlefield for bonding curves, campaign pages, UpVotes, graduation, rewards, battles, and leagues."],
-  ["Solana next", "The next expansion target, bringing the MemeWarzone campaign loop to a fast meme-native chain."],
+  ["BNB first", "The first live battlefield for promotion pages, bonding curves, UpVotes, graduation, rewards, battles, and leagues."],
+  ["Solana next", "A planned expansion target for bringing the MemeWarzone campaign loop to a fast meme-native ecosystem."],
   ["Major meme ecosystems", "Base, Ethereum, Tron, Polygon, and TON are roadmap targets for broader retail and meme-market reach."],
 ];
 
 const graduationCards = [
-  ["Pre-grad", "Prepare the campaign, gather followers, comments, shares, and opt-ins."],
-  ["Live launch", "Deploy on BNB and trade through the bonding curve."],
-  ["Graduation", "Reach the graduation threshold and move into DEX trading."],
-  ["Post-grad", "Keep fighting for attention through battles, sponsorships, and seasonal leagues."],
+  ["Pre-bonded heat", "Prepare the campaign, gather followers, comments, shares, opt-ins, and visible community signals."],
+  ["Live bonding", "Launch on BNB and build through the bonding curve."],
+  ["Graduation", "Reach the bonding threshold and move into the DEX stage."],
+  ["Post-bonded competition", "Keep fighting through battles, sponsored prize pools, tournaments, squads, and leagues."],
 ];
 
-const arenaFeatures = [
-  ["Battle visibility", "Graduated coins can fight for attention in public matchups."],
-  ["Seasonal leagues", "Monthly and quarterly seasons give post-grad projects recurring visibility moments."],
-  ["Sponsorship slots", "Projects can pay for extra labeled placement in visible discovery areas."],
-  ["Community pressure", "Comments, shares, UpVotes, battles, and league performance create more reasons to talk."],
+const postBondedFeatures = [
+  ["Battle visibility", "Post-bonded coins can fight for attention in public rivalries."],
+  ["Sponsored prize pools", "Sponsors back leagues, tournaments, or battles with clearly labeled funding."],
+  ["Seasonal points leagues", "Monthly and quarterly rankings reward active platform participation."],
+  ["Squad pressure", "Communities, recruiters, and squads get a reason to keep pushing after bonding."],
   ["Trader discovery", "Traders get a reason to look beyond brand-new launches."],
 ];
 
 const battleFlow = [
-  "A token enters or accepts a battle.",
-  "The matchup appears publicly in the Arena.",
-  "Communities push trading, UpVotes, comments, shares, holders, and social momentum.",
-  "The scoreboard updates during the battle window.",
-  "Winners gain visibility, ranking movement, and potential league impact.",
+  "A project challenges another project.",
+  "The challenger puts money into the battle.",
+  "The opponent accepts and matches the battle entry.",
+  "The battle runs for 24 hours, 3 days, or 7 days.",
+  "Communities push activity during the battle window.",
+  "The winner takes the prize.",
 ];
 
-const battleMetrics = [
-  "Trading activity",
-  "Community activity",
-  "UpVotes",
-  "Holders and traders",
-  "Comments and shares",
-  "Momentum during the battle window",
+const battleDurations = [
+  ["24-hour battles", "Fast, high-energy fights for quick attention."],
+  ["3-day battles", "A stronger campaign window with time for community push."],
+  ["7-day battles", "A full-week war for bigger rivalries, stronger narratives, and larger prize pools."],
 ];
 
-const sponsorshipPlacements = [
-  "Landing feature slots",
-  "Arena sponsored row",
-  "Pre-grad promotion page boosts",
-  "Post-grad spotlight cards",
-  "Battle or event sponsorship",
-  "Newsletter or social recap placements, if enabled",
-];
-
-const poolFlow = [
-  "A battle opens with published rules.",
-  "Eligible users choose a side.",
+const battlePoolFlow = [
+  "A selected battle opens with published pool rules.",
+  "Eligible users choose the side they believe will win.",
   "The pool closes before settlement.",
-  "The battle result is calculated from the published battle outcome.",
-  "Eligible winning-side users receive their pool outcome through the official platform flow.",
+  "The battle result is calculated from the published outcome rules.",
+  "Eligible winning-side users receive the official platform outcome where enabled.",
+];
+
+const sponsorCards = [
+  ["Sponsor a League", "Fund a monthly or quarterly points season. 70% of the sponsorship goes into the league prize pool."],
+  ["Sponsor a Tournament", "Back a structured event with public rules, brackets, finalists, and winners. 70% goes into the tournament prize pool."],
+  ["Sponsor a Battle", "Fuel a specific battle between meme coins. 70% goes into the battle prize pool."],
+  ["Sponsor visibility", "Sponsors are clearly shown as the backer of the competition, not hidden as organic ranking."],
+];
+
+const sponsorshipTypes = [
+  "League sponsorships",
+  "Tournament sponsorships",
+  "Battle sponsorships",
+  "Named prize pools",
+  "Sponsored winner recaps",
+  "Clearly labeled sponsor branding",
 ];
 
 const leagueTypes = [
-  ["Monthly Leagues", "Fast recurring seasons for active graduated coins."],
-  ["Quarterly Championships", "Bigger seasonal events for the strongest post-grad projects."],
-  ["Category Battles", "Different ways to win: volume, momentum, community activity, UpVotes, growth, and battle results."],
-  ["Public Winners", "Winners become content moments, not hidden dashboard numbers."],
+  ["Monthly Leagues", "Fast recurring points seasons that keep active projects and communities visible."],
+  ["Quarterly Championships", "Bigger seasonal competitions for the strongest point gatherers across the platform."],
+  ["Seasonal rankings", "Published rules, public leaderboards, monthly winners, and quarterly champions."],
+  ["Platform-wide activity", "Projects, traders, recruiters, and squads can all matter inside the active rules."],
+];
+
+const pointsExamples = [
+  "Campaign activity",
+  "Trading activity",
+  "Battle participation",
+  "Battle wins",
+  "Promotion page heat",
+  "Comments and shares",
+  "Recruiter growth",
+  "Squad contribution",
+  "Tournament activity",
+  "League-specific rules",
+];
+
+const rewards = [
+  [
+    "Creator fee share",
+    "Creators can earn from the fee flow connected to their own campaign where enabled by the active rules.",
+  ],
+  [
+    "Recruiter Program",
+    "Recruiters can earn a big chunk of the routed fees from creators and traders who joined through them and became part of their squad.",
+  ],
+  [
+    "Squad Pool",
+    "Eligible squad members can earn back part of the fee flow through the Squad Pool based on contribution and activity.",
+  ],
+  [
+    "League and tournament prizes",
+    "Active projects, communities, traders, recruiters, and squads can compete for points, prizes, status, and public winner moments.",
+  ],
 ];
 
 const chainRoadmap = [
   ["Phase 1", "BNB", "First live battlefield for deployment, bonding curves, graduation, rewards, battles, and leagues."],
-  ["Phase 2", "Solana", "Next expansion, targeted quickly after BNB."],
+  ["Phase 2", "Solana", "Next expansion target after the BNB-first launch."],
   ["Phase 3", "Base / Ethereum / Tron / Polygon / TON", "Expansion across major meme and retail ecosystems."],
   ["Phase 4", "Interchain + MemeWarzone Bridge", "Long-term connected battlefield across chains with profiles, rankings, rewards, and campaign history."],
-];
-
-const rewards = [
-  ["Creator trade share", "Campaign creators can participate in platform fee flows where enabled by the active rules."],
-  ["Recruiter attribution", "Recruiters can build visible contribution history instead of disappearing into random links."],
-  ["Squad impact", "Squads can coordinate community pressure and compete together around campaigns and battles."],
-  ["Season moments", "Airdrops, claims, league winners, and recaps can turn contribution into visible platform moments."],
 ];
 
 const faq = [
   {
     question: "Is MemeWarzone just another meme coin launchpad?",
     answer:
-      "No. MemeWarzone starts as a launchpad, but adds pre-grad promotion pages, community actions, battles, sponsorships, seasonal leagues, and post-grad exposure.",
+      "No. MemeWarzone is a launchpad, promotion engine, and battle arena. It helps meme coins build heat before bonding, then keep fighting for attention after bonding.",
   },
   {
-    question: "What is pre-grad?",
+    question: "What does pre-bonded mean?",
     answer:
-      "Pre-grad is the stage before deployment. Projects can build a live promotion page, collect follows, comments, shares, opt-ins, and prepare the launch before trading starts.",
+      "Pre-bonded is the stage before the memecoin bonds or graduates into the DEX stage. Projects can build a promotion page, collect follows, comments, shares, opt-ins, and community heat before the bonding curve becomes the main signal.",
   },
   {
-    question: "Why is pre-grad good for creators?",
+    question: "What does post-bonded mean?",
     answer:
-      "It helps creators avoid launching cold. They can build attention, show official links, explain the meme, and gather early community signals.",
+      "Post-bonded is the stage after the memecoin has bonded and moved into the wider market. Projects can keep competing through battles, sponsored prize pools, tournaments, squads, and monthly or quarterly points leagues.",
   },
   {
-    question: "Why is pre-grad good for MemeWarzone?",
+    question: "What does the heatmap show?",
     answer:
-      "It creates a visible pipeline of upcoming campaigns, gives the platform more content, and helps users discover projects before deployment.",
+      "The heatmap makes early attention visible before bonding. It can show follow heat, comment heat, share heat, opt-in heat, squad heat, recruiter heat, and launch readiness heat.",
   },
   {
-    question: "What happens after graduation?",
+    question: "How do battles work?",
     answer:
-      "The project moves into the DEX stage and can continue fighting for visibility through battles, sponsorships, and seasonal leagues.",
-  },
-  {
-    question: "What are battles?",
-    answer:
-      "Battles are public matchups between meme coins where communities push activity and compete for visibility.",
-  },
-  {
-    question: "What are seasonal leagues?",
-    answer:
-      "Monthly and quarterly post-grad competitions for graduated meme coins. They create recurring winner moments and reasons for communities to keep returning.",
+      "A project challenges another project and puts money into the battle. If the opponent accepts, they also put money in. The battle runs for 24 hours, 3 days, or 7 days, and the winner takes the prize under published rules.",
   },
   {
     question: "What are Battle Pools?",
     answer:
-      "Where enabled, Battle Pools let eligible users back a side in selected battles. Availability depends on rules, compliance, jurisdiction, and final platform configuration.",
+      "Battle Pools are separate from project-vs-project battle entries. In selected battles, eligible users may be able to back the side they believe will win. Availability depends on jurisdiction, compliance, age checks, wallet eligibility, and final platform configuration.",
+  },
+  {
+    question: "How does sponsorship work?",
+    answer:
+      "Sponsors fund the fight, not hidden placement. A sponsor backs a league, tournament, or battle, and 70% of the sponsor payment goes directly into that competition's prize pool.",
+  },
+  {
+    question: "How do recruiters earn?",
+    answer:
+      "Recruiters earn from the creators and traders they bring into their squad. When linked users are active, a major part of the routed fee share can go back to the recruiter system.",
+  },
+  {
+    question: "What does the squad earn?",
+    answer:
+      "Eligible squad members can earn from the Squad Pool, which routes part of the fee flow back to squads based on contribution and eligibility.",
+  },
+  {
+    question: "How do leagues work?",
+    answer:
+      "Monthly and quarterly leagues are seasonal points competitions. Points can be gathered by platform activity such as campaign heat, trading activity, battle participation, recruiter growth, squad contribution, and league-specific rules.",
   },
   {
     question: "Which chain launches first?",
     answer:
-      "MemeWarzone launches on BNB first, then expands to Solana, followed by Base, Ethereum, Tron, Polygon, and TON.",
+      "MemeWarzone launches on BNB first, then expands toward Solana, followed by Base, Ethereum, Tron, Polygon, and TON as roadmap targets.",
   },
   {
     question: "What is the long-term vision?",
@@ -289,15 +338,14 @@ function App() {
       <main>
         <section className="hero" aria-labelledby="hero-title">
           <div className="heroCopy">
-            <p className="eyebrow">Launchpad + Promotion Engine + Post-Grad Arena</p>
-            <h1 id="hero-title">Launch better. Graduate louder. Keep fighting after the chart goes live.</h1>
+            <p className="eyebrow">Launchpad + Promotion Engine + Battle Arena</p>
+            <h1 id="hero-title">Build heat before bonding. Keep fighting after bonding.</h1>
             <p className="heroLead">
-              MemeWarzone is a meme coin launchpad built for the full campaign lifecycle: prepare before launch,
-              build a live promotion page, collect early attention, deploy on BNB, graduate into DEX trading,
-              and keep earning visibility through battles, sponsorships, and seasonal leagues.
+              MemeWarzone helps meme coins prepare before launch, build live community heat, bond on BNB,
+              and keep earning attention through battles, leagues, tournaments, squads, and sponsored prize pools.
             </p>
             <p className="brandLine">
-              Pump.fun and Four.Meme help you launch. MemeWarzone helps you prepare, promote, graduate, and keep getting attention after graduation.
+              Pump.fun and Four.Meme help you launch. MemeWarzone helps you build heat, bond stronger, and stay visible after bonding.
             </p>
             <div className="heroActions">
               <a className="button buttonPrimary" href={appBaseUrl}>Enter Launchpad <ArrowIcon /></a>
@@ -306,14 +354,14 @@ function App() {
           </div>
 
           <aside className="heroPanel" aria-label="Why MemeWarzone is different">
-            <p className="panelKicker">Why it is different</p>
-            <h2>Pre-grad promotion. Post-grad exposure.</h2>
+            <p className="panelKicker">North star</p>
+            <h2>Meme coins need more than a launch button.</h2>
             <p>
-              Most launchpads focus on the token creation moment. MemeWarzone gives projects a campaign before launch and a battlefield after graduation.
+              MemeWarzone helps meme coins build heat before bonding, then keep fighting for attention after bonding.
             </p>
             <div className="miniStats" aria-label="MemeWarzone lifecycle">
-              <span>Prepare</span>
-              <span>Deploy</span>
+              <span>Promote</span>
+              <span>Bond</span>
               <span>Graduate</span>
               <span>Battle</span>
             </div>
@@ -323,10 +371,10 @@ function App() {
         <section className="section sectionTight" id="how-it-works" aria-labelledby="lifecycle-title">
           <SectionHeading
             eyebrow="Full campaign lifecycle"
-            title="Prepare, deploy, graduate, then keep fighting."
+            title="Prepare, bond, graduate, then keep fighting."
             centered
           >
-            MemeWarzone is not just a token factory. It is a linear campaign journey that starts before deployment and continues after graduation.
+            MemeWarzone is a meme coin launchpad where projects can build a live promotion page, collect follows, comments, shares, opt-ins, and heat before launch, bond first on BNB, then keep competing through battles, squads, sponsored prize pools, tournaments, and monthly or quarterly points leagues.
           </SectionHeading>
           <div className="timelineRail" aria-hidden="true" />
           <div className="lifecycleGrid">
@@ -341,8 +389,8 @@ function App() {
         </section>
 
         <section className="section" id="why-different" aria-labelledby="comparison-title">
-          <SectionHeading eyebrow="Why launch here?" title="Why launch here instead of another token factory?">
-            Most meme launchpads help you create a token and start trading. After that, the creator has to handle promotion, community building, holder attention, raids, and post-launch visibility somewhere else. MemeWarzone builds those campaign tools into the launchpad.
+          <SectionHeading eyebrow="Why launch here?" title="Why launch here instead of another memecoin factory?">
+            Most meme launchpads help you create a memecoin and start trading. After that, creators still need promotion, community growth, activity loops, battle content, and recurring reasons for attention. MemeWarzone builds that campaign layer into the launchpad.
           </SectionHeading>
           <div className="comparisonGrid">
             {comparison.map((card) => (
@@ -359,36 +407,36 @@ function App() {
           </div>
         </section>
 
-        <section className="featureBlock preGradBlock" id="pre-grad" aria-labelledby="pregrad-title">
+        <section className="featureBlock preBondedBlock" id="pre-bonded" aria-labelledby="prebonded-title">
           <div className="featureCopy">
-            <p className="eyebrow">Pre-grad / Prepare Mode</p>
-            <h2 id="pregrad-title">Pre-grad is where serious launches build attention before deployment.</h2>
+            <p className="eyebrow">Pre-bonded / Prepare Mode</p>
+            <h2 id="prebonded-title">Pre-bonded is where serious launches build heat before bonding.</h2>
             <p>
-              Most meme coins launch first and try to organize later. MemeWarzone flips that. Before deployment, a project can create a live promotion page, tell its story, add official links, collect follows, receive comments, build share activity, gather opt-ins, and prepare its community before trading starts.
+              Most meme coins launch first and try to organize later. MemeWarzone flips that. Before bonding, a project can create a live promotion page, tell its story, add official links, collect follows, receive comments, build share activity, gather opt-ins, and prepare its community before trading starts.
             </p>
             <div className="featureStrip">
-              <span>Not a waiting room</span>
+              <span>Pre-bonded heat</span>
               <span>Early attention</span>
-              <span>More eyes before launch</span>
+              <span>Launch readiness</span>
             </div>
           </div>
           <div className="grid2">
-            {preGradFeatures.map(([title, body]) => (
+            {preBondedFeatures.map(([title, body]) => (
               <FeatureCard key={title} title={title} body={body} />
             ))}
           </div>
         </section>
 
         <section className="section" id="promotion" aria-labelledby="promotion-title">
-          <SectionHeading eyebrow="Live promotion pages" title="Every serious launch gets a live promotion page before trading starts.">
-            A MemeWarzone campaign can start building attention before deployment. The promotion page gives the project a public home where users can follow, comment, share, opt in for updates, check official links, and understand the launch before the bonding curve opens.
+          <SectionHeading eyebrow="Live promotion pages" title="The promotion page shows where the heat is building.">
+            Every pre-bonded campaign gets a live promotion page. Users can follow, opt in, comment, share, and interact before the memecoin bonds. The live heatmap turns that activity into a clear signal: which campaigns are getting attention before launch.
           </SectionHeading>
           <div className="splitPanel">
             <div className="promoMock card">
               <span className="cardLabel">Campaign page</span>
-              <h3>Official source before launch</h3>
+              <h3>Official source before bonding</h3>
               <p>
-                Creators get free early marketing. Users get a safer official source. MemeWarzone gets a better way to surface projects already gaining attention.
+                Creators get free early marketing. Users get a clearer official source. The heatmap makes early attention visible before the bonding curve becomes the only signal.
               </p>
               <a className="button buttonPrimary" href={`${appBaseUrl}/create`}>Start a campaign <ArrowIcon /></a>
             </div>
@@ -396,11 +444,14 @@ function App() {
               {promotionFeatures.map((feature) => <span key={feature}>{feature}</span>)}
             </div>
           </div>
+          <div className="heatmapGrid">
+            {heatmapFeatures.map(([title, body]) => <FeatureCard key={title} title={title} body={body} />)}
+          </div>
         </section>
 
         <section className="section" id="deploy" aria-labelledby="deploy-title">
           <SectionHeading eyebrow="Deployment" title="BNB first. Then every major meme chain.">
-            MemeWarzone launches on BNB first because it gives the platform a fast, active, retail-friendly battlefield for the full launchpad system: bonding curves, campaign pages, UpVotes, graduation, rewards, and post-grad competition.
+            MemeWarzone launches on BNB first because it gives the platform a fast, active, retail-friendly battlefield for the full launchpad system: bonding curves, promotion pages, UpVotes, graduation, rewards, battles, and leagues.
           </SectionHeading>
           <div className="cardGrid3">
             {deploymentCards.map(([title, body]) => <FeatureCard key={title} title={title} body={body} />)}
@@ -408,8 +459,8 @@ function App() {
         </section>
 
         <section className="section" id="graduation" aria-labelledby="graduation-title">
-          <SectionHeading eyebrow="Graduation" title="Graduation is not the end. It is the start of the next battlefield.">
-            When a campaign reaches the graduation threshold, it moves from the early bonding-curve phase into the DEX stage. That is where most launchpads stop. MemeWarzone keeps the story going with post-grad visibility, battles, sponsorship placements, seasonal leagues, and community competition.
+          <SectionHeading eyebrow="Bonding and graduation" title="Graduation is not the end. It is the start of the next battlefield.">
+            When a campaign reaches the bonding threshold, it moves from the early bonding curve into the wider market. That is where most launchpads stop. MemeWarzone keeps the story going with post-bonded competition.
           </SectionHeading>
           <div className="timelineCards">
             {graduationCards.map(([title, body], index) => (
@@ -422,78 +473,110 @@ function App() {
           </div>
         </section>
 
-        <section className="featureBlock postGradBlock" id="arena" aria-labelledby="arena-title">
+        <section className="featureBlock postBondedBlock" id="post-bonded" aria-labelledby="postbonded-title">
           <div className="featureCopy">
-            <p className="eyebrow">Post-grad Arena</p>
-            <h2 id="arena-title">Post-grad coins do not disappear. They enter the Arena.</h2>
+            <p className="eyebrow">Post-bonded competition</p>
+            <h2 id="postbonded-title">Post-bonded coins do not disappear. They keep fighting.</h2>
             <p>
-              Graduated meme coins need more than liquidity. They need attention, competition, content, and reasons for communities to keep showing up. The Arena gives graduated projects ongoing visibility through battles, leaderboards, sponsorship slots, and seasonal leagues.
+              Meme coins need more than liquidity. They need attention, competition, content, and reasons for communities to keep showing up. MemeWarzone gives projects ongoing competition through battles, sponsored prize pools, tournaments, squads, and leagues.
             </p>
           </div>
           <div className="grid2">
-            {arenaFeatures.map(([title, body]) => <FeatureCard key={title} title={title} body={body} />)}
+            {postBondedFeatures.map(([title, body]) => <FeatureCard key={title} title={title} body={body} />)}
           </div>
         </section>
 
         <section className="section" id="battles" aria-labelledby="battles-title">
-          <SectionHeading eyebrow="Battles" title="Battles turn attention into a public contest.">
-            A battle is a public matchup between meme coins. Instead of every project shouting into the void, battles give communities a clear opponent, a scoreboard, and a reason to push harder.
+          <SectionHeading eyebrow="Battles" title="Battles put real stakes behind meme coin rivalries.">
+            A battle starts when one project puts money into a challenge. If the opponent accepts, they also put money in. The battle runs for a fixed window - 24 hours, 3 days, or 7 days - and the winner takes the prize.
           </SectionHeading>
           <div className="splitPanel splitPanelReverse">
             <NumberedFlow items={battleFlow} />
             <article className="card calloutCard">
-              <span className="cardLabel">Built for content</span>
-              <h3>“We are fighting this project today — push us up the board.”</h3>
+              <span className="cardLabel">Project vs project</span>
+              <h3>Challenge. Match. Fight. Win.</h3>
               <p>
-                Battles give communities a simple story to rally around. Scoreboards can use signals like trading activity, community activity, UpVotes, holders, comments, shares, and momentum over the battle window.
+                Battles turn meme coin rivalry into a public contest with entry money, opponent acceptance, a fixed time window, community pressure, and a winner-takes-prize outcome.
               </p>
-              <div className="pillGrid compact">
-                {battleMetrics.map((metric) => <span key={metric}>{metric}</span>)}
-              </div>
+              <p className="smallNote">
+                Battle rules, scoring, eligibility, and settlement must be published before the battle starts.
+              </p>
+            </article>
+          </div>
+          <div className="durationGrid">
+            {battleDurations.map(([title, body]) => <FeatureCard key={title} title={title} body={body} />)}
+          </div>
+        </section>
+
+        <section className="section" id="battle-pools" aria-labelledby="battle-pools-title">
+          <SectionHeading eyebrow="Battle Pools" title="Battle Pools let users back the side they believe in.">
+            In selected battles, eligible users may be able to put money behind the side they think will win. Battle Pools are separate from the project-vs-project battle entry. They are user-side pools and must follow platform rules, eligibility checks, and jurisdiction limits.
+          </SectionHeading>
+          <div className="splitPanel">
+            <NumberedFlow items={battlePoolFlow} />
+            <article className="card warningPanel warningPanelStrong">
+              <span className="cardLabel">Gated feature</span>
+              <h3>Availability depends on final rules.</h3>
+              <p>
+                Battle Pools are a gated feature. Availability depends on jurisdiction, compliance rules, age checks, wallet eligibility, and final platform configuration.
+              </p>
             </article>
           </div>
         </section>
 
         <section className="section" id="sponsorship" aria-labelledby="sponsorship-title">
-          <SectionHeading eyebrow="Labeled visibility" title="Sponsorship gives projects extra visibility without hiding it.">
-            Projects that want more attention can sponsor visible placement inside MemeWarzone. Sponsored projects should be clearly labeled, so users know the difference between paid visibility and organic battle or league performance.
+          <SectionHeading eyebrow="Sponsorship" title="Sponsors fund the fight, not hidden placement.">
+            MemeWarzone sponsorship is not buying a fake ranking or hidden placement. A sponsor backs a league, tournament, or battle, and 70% of the sponsor payment goes directly into that prize pool.
           </SectionHeading>
-          <div className="splitPanel">
-            <article className="card warningPanel">
-              <span className="cardLabel">Transparent monetization</span>
-              <h3>Paid visibility should be labeled, not hidden.</h3>
-              <p>
-                For projects, sponsorship means more eyes during important launch or post-grad moments. For users, it means clear labeling instead of hidden manipulation. For the platform, it creates a direct growth layer that can support content, rewards, and operations.
-              </p>
-            </article>
-            <div className="pillGrid">
-              {sponsorshipPlacements.map((placement) => <span key={placement}>{placement}</span>)}
-            </div>
+          <div className="sponsorFlow">
+            {sponsorCards.map(([title, body]) => <FeatureCard key={title} title={title} body={body} />)}
           </div>
-        </section>
-
-        <section className="section" id="pools" aria-labelledby="pools-title">
-          <SectionHeading eyebrow="Planned / gated feature" title="Battle Pools: support the side you think will win.">
-            Where enabled, Battle Pools let users back a side in selected battles. Users choose which project they think will win based on public battle rules, then the result is settled from the published battle outcome.
-          </SectionHeading>
-          <div className="splitPanel splitPanelReverse">
-            <NumberedFlow items={poolFlow} />
-            <article className="card warningPanel warningPanelStrong">
-              <span className="cardLabel">Compliance note</span>
-              <h3>Not universally available.</h3>
-              <p>
-                Battle Pools are planned as a regulated, gated feature. Availability may depend on jurisdiction, compliance rules, age checks, wallet eligibility, and final platform configuration.
-              </p>
-            </article>
+          <div className="pillGrid compact">
+            {sponsorshipTypes.map((item) => <span key={item}>{item}</span>)}
           </div>
         </section>
 
         <section className="section" id="leagues" aria-labelledby="leagues-title">
-          <SectionHeading eyebrow="Seasonal leagues" title="Monthly and quarterly leagues keep graduated coins in the spotlight.">
-            Most meme coins lose attention after the first launch window. MemeWarzone gives graduated projects recurring competitive seasons so communities have a reason to return, push, and create content.
+          <SectionHeading eyebrow="Seasonal points leagues" title="Monthly and quarterly leagues reward active platform participation.">
+            MemeWarzone leagues are seasonal points competitions. Projects, traders, recruiters, and squads gather points by being active on the platform. Monthly leagues create frequent winner moments, while quarterly leagues create bigger seasonal championships.
           </SectionHeading>
           <div className="cardGrid4">
             {leagueTypes.map(([title, body]) => <FeatureCard key={title} title={title} body={body} />)}
+          </div>
+          <article className="card pointsPanel">
+            <span className="cardLabel">Points can come from</span>
+            <div className="pillGrid compact">
+              {pointsExamples.map((item) => <span key={item}>{item}</span>)}
+            </div>
+          </article>
+        </section>
+
+        <section className="section" id="rewards" aria-labelledby="rewards-title">
+          <SectionHeading eyebrow="Rewards and fee flywheel" title="Recruiters, squads, creators, and active communities should have a reason to push.">
+            Rewards depend on active campaign rules, eligibility, anti-abuse checks, and final platform configuration. The goal is simple: make contribution visible and route value back into the warzone.
+          </SectionHeading>
+          <div className="cardGrid4">
+            {rewards.map(([title, body]) => <FeatureCard key={title} title={title} body={body} />)}
+          </div>
+        </section>
+
+        <section className="featureBlock recruiterBlock" id="recruiters" aria-labelledby="recruiters-title">
+          <div className="featureCopy">
+            <p className="eyebrow">Recruiters and squads</p>
+            <h2 id="recruiters-title">Growth should belong to the people who bring the army.</h2>
+            <p>
+              Recruiters are not just sharing links. When creators and traders join through your recruiter link and become part of your squad, you can earn a major share of the routed platform fees connected to their activity.
+            </p>
+          </div>
+          <div className="grid2">
+            <FeatureCard
+              title="Recruiter Program"
+              body="Bring creators and traders into MemeWarzone, grow your squad, and earn a big chunk of the routed fees from the activity your squad generates."
+            />
+            <FeatureCard
+              title="Squad Pool"
+              body="Your squad can earn back part of the fee flow through the Squad Pool. It is not an equal split: contribution, activity, eligibility, and anti-abuse checks matter."
+            />
           </div>
         </section>
 
@@ -512,15 +595,6 @@ function App() {
           </div>
         </section>
 
-        <section className="section" id="rewards" aria-labelledby="rewards-title">
-          <SectionHeading eyebrow="Rewards and fee flywheel" title="Contribution should create visible platform moments.">
-            MemeWarzone is designed to make launches, battles, recruiter activity, squad pressure, airdrops, claims, and seasonal winners visible. Rewards depend on active campaign rules, eligibility, and final platform configuration.
-          </SectionHeading>
-          <div className="cardGrid4">
-            {rewards.map(([title, body]) => <FeatureCard key={title} title={title} body={body} />)}
-          </div>
-        </section>
-
         <section className="section faqSection" id="faq" aria-labelledby="faq-title">
           <SectionHeading eyebrow="FAQ" title="Common questions, answered." centered />
           <div className="faqGrid">
@@ -535,9 +609,9 @@ function App() {
 
         <section className="finalCta" aria-labelledby="final-title">
           <p className="eyebrow">Ready for deployment</p>
-          <h2 id="final-title">Build attention before launch. Graduate into the market. Keep fighting after graduation.</h2>
+          <h2 id="final-title">Build heat before bonding. Keep fighting after bonding.</h2>
           <p>
-            MemeWarzone is the meme coin launchpad that helps projects prepare, promote, graduate, and stay visible after the first chart candle.
+            MemeWarzone helps meme coins prepare before launch, build live community heat, bond on BNB, and keep earning attention through battles, leagues, tournaments, squads, and sponsored prize pools.
           </p>
           <div className="heroActions">
             <a className="button buttonPrimary" href={appBaseUrl}>Enter Launchpad <ArrowIcon /></a>

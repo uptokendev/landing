@@ -202,8 +202,8 @@ a {
   grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.56fr);
   align-items: end;
   gap: clamp(1rem, 3.2vw, 2.8rem);
-  min-height: calc(100vh - 78px);
-  padding: clamp(3.2rem, 7vw, 6.6rem) 0 clamp(2.4rem, 5vw, 4.2rem);
+  min-height: auto;
+  padding: clamp(3rem, 6vw, 5.2rem) 0 clamp(2.4rem, 5vw, 4rem);
 }
 
 .heroCopy {
@@ -239,12 +239,12 @@ h3 {
 }
 
 h1 {
-  max-width: 940px;
+  max-width: 780px;
   margin-bottom: 1rem;
-  font-size: clamp(3rem, 7.15vw, 6.85rem);
+  font-size: clamp(2.35rem, 5.2vw, 4.85rem);
   font-weight: 950;
-  letter-spacing: -0.055em;
-  line-height: 0.88;
+  letter-spacing: -0.04em;
+  line-height: 0.94;
 }
 
 h2 {
@@ -264,10 +264,10 @@ h3 {
 }
 
 .heroLead {
-  max-width: 790px;
+  max-width: 720px;
   margin-bottom: 1rem;
   color: #d8d0c0;
-  font-size: clamp(1rem, 1.4vw, 1.22rem);
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
   line-height: 1.68;
 }
 
@@ -276,7 +276,7 @@ h3 {
   margin-bottom: 1.4rem;
   color: var(--amber);
   font-family: var(--font-display);
-  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  font-size: clamp(1.02rem, 1.6vw, 1.28rem);
   font-weight: 850;
   line-height: 1.22;
   text-transform: uppercase;
@@ -312,9 +312,17 @@ h3 {
 .card p,
 .sectionHeading p,
 .featureCopy p,
-.finalCta p {
+.finalCta p,
+.smallNote {
   color: var(--muted);
   line-height: 1.62;
+}
+
+.smallNote {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: #ffd9a4;
+  font-size: 0.94rem;
 }
 
 .miniStats {
@@ -352,7 +360,7 @@ h3 {
 }
 
 .sectionHeading {
-  max-width: 900px;
+  max-width: 930px;
   margin-bottom: 1.45rem;
 }
 
@@ -379,7 +387,10 @@ h3 {
 .cardGrid4,
 .timelineCards,
 .roadmapGrid,
-.faqGrid {
+.faqGrid,
+.heatmapGrid,
+.durationGrid,
+.sponsorFlow {
   display: grid;
   gap: 0.85rem;
 }
@@ -395,13 +406,20 @@ h3 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.cardGrid3 {
+.cardGrid3,
+.durationGrid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .cardGrid4,
-.timelineCards {
+.timelineCards,
+.sponsorFlow {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.heatmapGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 0.9rem;
 }
 
 .faqGrid {
@@ -471,11 +489,12 @@ h3 {
   padding: clamp(1.3rem, 3vw, 2rem);
 }
 
-.preGradBlock {
+.preBondedBlock {
   border-color: rgba(var(--orange-rgb), 0.46);
 }
 
-.postGradBlock {
+.postBondedBlock,
+.recruiterBlock {
   border-color: rgba(255, 208, 138, 0.34);
   background:
     radial-gradient(620px 280px at 5% 0%, rgba(var(--orange-rgb), 0.16), transparent 72%),
@@ -543,6 +562,10 @@ h3 {
   padding: 0;
   border: 0;
   background: transparent;
+}
+
+.pointsPanel {
+  margin-top: 0.9rem;
 }
 
 .flowList {
@@ -632,6 +655,14 @@ h3 {
   margin-bottom: 1.2rem;
 }
 
+@media (max-width: 1100px) {
+  .cardGrid4,
+  .timelineCards,
+  .sponsorFlow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 980px) {
   .navBar {
     grid-template-columns: auto auto;
@@ -659,8 +690,8 @@ h3 {
 
   .lifecycleGrid,
   .cardGrid3,
-  .cardGrid4,
-  .timelineCards {
+  .durationGrid,
+  .heatmapGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -695,7 +726,7 @@ h3 {
   }
 
   h1 {
-    font-size: clamp(2.75rem, 14vw, 4.3rem);
+    font-size: clamp(2.35rem, 11vw, 3.55rem);
   }
 
   h2 {
@@ -715,7 +746,10 @@ h3 {
   .lifecycleGrid,
   .cardGrid3,
   .cardGrid4,
-  .timelineCards {
+  .timelineCards,
+  .durationGrid,
+  .heatmapGrid,
+  .sponsorFlow {
     grid-template-columns: 1fr;
   }
 
