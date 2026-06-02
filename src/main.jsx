@@ -1,135 +1,377 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { ArrowRight, Crosshair, RadioTower, Shield, Trophy, Users } from "lucide-react";
 import "./styles.css";
 
-const launchpadUrl = "https://apps.memewar.zone";
-const logoUrl = "https://raw.githubusercontent.com/uptokendev/MemeBattles/dev/frontend/public/assets/hero/logo.png";
-const heroUrl = "https://raw.githubusercontent.com/uptokendev/MemeBattles/dev/frontend/public/assets/hero/herobg.png";
+const appBaseUrl = "https://apps.memewar.zone";
+const homeUrl = "https://memewar.zone";
 
-const loop = [
-  ["01", "Create the campaign", "Creators brief the mission, token story, objectives, and calls to action before the market has to guess."],
-  ["02", "Prepare the push", "Recruiters and squads line up the audience, tasks, and incentives that make a launch readable."],
-  ["03", "Fight for momentum", "Traders track activity, squads coordinate, and campaigns move through public battle loops."],
-  ["04", "Graduate winners", "The strongest campaigns climb into bigger arenas with rewards, claims, and recognition attached."],
+const navItems = [
+  { label: "How it works", href: "#how-it-works" },
+  { label: "Why different", href: "#why-different" },
+  { label: "Arena", href: "#arena" },
+  { label: "Rewards", href: "#rewards" },
+];
+
+const comparisonCards = [
+  {
+    title: "Normal launchpads",
+    label: "Create and trade",
+    items: [
+      "Create token",
+      "Trade token",
+      "Promote manually",
+      "Hard to track who helped",
+      "Attention disappears fast",
+    ],
+  },
+  {
+    title: "MemeWarzone",
+    label: "Launch and build",
+    featured: true,
+    items: [
+      "Create or prepare token",
+      "Recruit supporters",
+      "Run missions",
+      "Enter battles",
+      "Build squads",
+      "Track reward paths",
+    ],
+  },
+];
+
+const steps = [
+  {
+    number: "01",
+    title: "Create or prepare a coin",
+    body: "Launch immediately or build the campaign first with a clear page, story, links, goals, and launch plan.",
+  },
+  {
+    number: "02",
+    title: "Bring in the community",
+    body: "Recruiters, squads, and social missions help push the token before and after launch.",
+  },
+  {
+    number: "03",
+    title: "Compete for attention",
+    body: "Tokens enter battles, leaderboards, events, and arena sections where momentum is visible.",
+  },
+  {
+    number: "04",
+    title: "Reward the push",
+    body: "Recruiters, squads, airdrop winners, league winners, and creators can be tracked through reward systems.",
+  },
 ];
 
 const roles = [
-  [Users, "Creators", "Turn a meme coin launch into a command page with context, proof, and a clear next move."],
-  [Crosshair, "Traders", "Compare campaign momentum and decide where to deploy without digging through scattered chats."],
-  [RadioTower, "Recruiters", "Bring new fighters into a campaign and compete on visible recruiter performance."],
-  [Shield, "Squads", "Coordinate as a unit, stack impact, and turn community action into measurable battlefield pressure."],
+  {
+    icon: "👥",
+    title: "Creators",
+    body: "Launch with more than a chart. Give your coin a campaign page, mission, socials, recruiter links, and a path into the arena.",
+  },
+  {
+    icon: "🎯",
+    title: "Traders",
+    body: "Find coins with visible momentum. See which tokens are active, battling, recruiting, and gaining attention.",
+  },
+  {
+    icon: "📡",
+    title: "Recruiters",
+    body: "Share campaigns, bring in users, and build visible performance instead of disappearing into random referral links.",
+  },
+  {
+    icon: "🛡️",
+    title: "Squads",
+    body: "Coordinate as a group, push campaigns together, and compete as part of the token's growth machine.",
+  },
 ];
+
+const arenaFeatures = [
+  "Live token battles",
+  "Open-for-battle coins",
+  "Featured UpVotes",
+  "Events and leagues",
+  "Arena visibility",
+  "Community momentum",
+];
+
+const rewardTypes = [
+  "Recruiter rewards",
+  "Squad rewards",
+  "Airdrop rewards",
+  "League rewards",
+  "Creator fee rewards",
+  "Community missions",
+];
+
+const faq = [
+  {
+    question: "Is MemeWarzone a launchpad?",
+    answer:
+      "Yes. You can launch meme coins, but MemeWarzone adds campaign tools, battles, squads, missions, and rewards around the launch.",
+  },
+  {
+    question: "How is it different from pump.fun or Four.Meme?",
+    answer:
+      "Those platforms focus mostly on token creation and trading. MemeWarzone adds the campaign layer: preparation, recruiters, squads, missions, battles, arena progression, and reward paths.",
+  },
+  {
+    question: "Do I need to create a coin?",
+    answer:
+      "No. You can also trade, recruit, join squads, complete missions, follow campaigns, or compete through the arena.",
+  },
+  {
+    question: "What happens after a token launches?",
+    answer:
+      "It can build visibility through the Arena, battles, UpVotes, leagues, events, social missions, and community activity.",
+  },
+  {
+    question: "Are rewards guaranteed?",
+    answer:
+      "No. Rewards depend on the active campaign, rules, eligibility, and platform systems. MemeWarzone is designed to make contribution and reward paths easier to track.",
+  },
+];
+
+function IconCheck() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="checkIcon">
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="arrowIcon">
+      <path d="M5 12h14" />
+      <path d="m13 6 6 6-6 6" />
+    </svg>
+  );
+}
 
 function App() {
   return (
-    <div className="site" style={{ "--hero-image": `url(${heroUrl})` }}>
-      <header className="nav">
-        <a className="brand" href="https://memewar.zone" aria-label="MemeWarzone home">
-          <img src={logoUrl} alt="" />
+    <div className="siteShell">
+      <header className="navBar" aria-label="MemeWarzone navigation">
+        <a className="brand" href={homeUrl} aria-label="MemeWarzone home">
+          <img src="/assets/hero/logo.png" alt="" />
           <span>MemeWarzone</span>
         </a>
-        <nav aria-label="Page sections">
-          <a href="#loop">Loop</a>
-          <a href="#roles">Roles</a>
-          <a href="#prepare">Prepare</a>
-          <a href="#rewards">Rewards</a>
+
+        <nav className="navLinks" aria-label="Page sections">
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href}>
+              {item.label}
+            </a>
+          ))}
         </nav>
-        <a className="button buttonSmall" href={launchpadUrl}>Launchpad</a>
+
+        <a className="navCta" href={appBaseUrl}>
+          Launchpad
+        </a>
       </header>
 
       <main>
-        <section className="hero">
+        <section className="hero" aria-labelledby="hero-title">
           <div className="heroCopy">
-            <p className="eyebrow">Public command brief</p>
-            <h1>MemeWarzone</h1>
-            <p className="lead">A launchpad and battle arena for meme coin campaigns where creators brief the mission, traders read momentum, recruiters build reach, and squads compete for graduation.</p>
-            <div className="actions">
-              <a className="button primary" href={launchpadUrl}>Launchpad <ArrowRight size={18} /></a>
-              <a className="button" href="#loop">See the battle loop</a>
+            <p className="eyebrow">Meme coin launchpad + battle arena</p>
+            <h1 id="hero-title">Launch meme coins with a built-in army.</h1>
+            <p className="heroLead">
+              MemeWarzone is a meme coin launchpad where every token can prepare its launch,
+              recruit supporters, enter battles, climb the arena, and reward the people who help it grow.
+            </p>
+            <p className="brandLine">Launch the coin. Build the army. Fight for attention.</p>
+            <div className="heroActions">
+              <a className="button buttonPrimary" href={appBaseUrl}>
+                Enter Launchpad <ArrowIcon />
+              </a>
+              <a className="button" href="#how-it-works">
+                How it works
+              </a>
             </div>
           </div>
-          <aside className="statusPanel">
-            <span>Battlefield loop</span>
-            <strong>Create. Prepare. Trade. Recruit. Graduate.</strong>
-            <p>MemeWarzone turns campaign chaos into a readable operating field with visible roles and reward paths.</p>
+
+          <aside className="heroPanel" aria-label="What makes MemeWarzone different">
+            <p className="panelKicker">What makes it different?</p>
+            <h2>Launchpad + Missions + Battles + Squads + Rewards</h2>
+            <p>
+              Most launchpads help you create a token. MemeWarzone helps you build the campaign around it.
+            </p>
+            <div className="miniStats" aria-label="MemeWarzone product layers">
+              <span>Launch</span>
+              <span>Recruit</span>
+              <span>Battle</span>
+              <span>Reward</span>
+            </div>
           </aside>
         </section>
 
-        <section id="loop" className="section">
-          <div className="sectionHead">
-            <p className="eyebrow">What it is</p>
-            <h2>A public battlefield for the whole campaign cycle.</h2>
+        <section className="section sectionTight" id="why-different" aria-labelledby="different-title">
+          <div className="sectionHeading centered">
+            <p className="eyebrow">Why it is different</p>
+            <h2 id="different-title">Used to pump.fun or Four.Meme?</h2>
+            <p>
+              Most launchpads help you create a token. After that, promotion, raids, community growth,
+              and momentum happen somewhere else. MemeWarzone adds the campaign layer inside the platform.
+            </p>
           </div>
-          <div className="loopGrid">
-            {loop.map(([step, title, body]) => (
-              <article className="panel" key={title}>
-                <span>{step}</span>
-                <h3>{title}</h3>
-                <p>{body}</p>
+
+          <div className="comparisonGrid">
+            {comparisonCards.map((card) => (
+              <article className={`comparisonCard ${card.featured ? "comparisonCardFeatured" : ""}`} key={card.title}>
+                <div>
+                  <span className="cardLabel">{card.label}</span>
+                  <h3>{card.title}</h3>
+                </div>
+                <ul>
+                  {card.items.map((item) => (
+                    <li key={item}>
+                      <IconCheck />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="roles" className="section">
-          <div className="sectionHead">
-            <p className="eyebrow">Roles</p>
-            <h2>Creators, traders, recruiters, and squads share the same map.</h2>
+        <section className="section" id="how-it-works" aria-labelledby="works-title">
+          <div className="sectionHeading">
+            <p className="eyebrow">How it works</p>
+            <h2 id="works-title">How MemeWarzone works</h2>
+            <p>
+              A meme coin does not only need a chart. It needs a campaign, supporters, visibility,
+              and a reason for people to keep pushing.
+            </p>
           </div>
+
+          <div className="stepGrid">
+            {steps.map((step) => (
+              <article className="panel stepCard" key={step.title}>
+                <span>{step.number}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section" aria-labelledby="roles-title">
+          <div className="sectionHeading centered">
+            <p className="eyebrow">Who it is for</p>
+            <h2 id="roles-title">Built for everyone around a meme coin.</h2>
+          </div>
+
           <div className="roleGrid">
-            {roles.map(([Icon, title, body]) => (
-              <article className="panel role" key={title}>
-                <Icon size={22} />
-                <h3>{title}</h3>
-                <p>{body}</p>
+            {roles.map((role) => (
+              <article className="panel roleCard" key={role.title}>
+                <div className="roleIcon" aria-hidden="true">{role.icon}</div>
+                <h3>{role.title}</h3>
+                <p>{role.body}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="prepare" className="feature">
-          <div>
+        <section className="featureBlock" aria-labelledby="prepare-title">
+          <div className="featureCopy">
             <p className="eyebrow">Prepare Mode</p>
-            <h2>Build the campaign before the first major push.</h2>
-            <p>Prepare Mode gives a token its staging ground: narrative, objectives, recruiter paths, squad coordination, and calls to action.</p>
+            <h2 id="prepare-title">Prepare before you launch.</h2>
+            <p>
+              Most meme coins launch first and organize later. MemeWarzone lets creators prepare the campaign
+              before the token goes live: story, socials, missions, recruiter links, squad push, and launch timing.
+            </p>
           </div>
-          <a className="button primary" href={`${launchpadUrl}/create`}>Start in Launchpad</a>
+          <a className="button buttonPrimary" href={`${appBaseUrl}/create`}>
+            Start a Campaign <ArrowIcon />
+          </a>
         </section>
 
-        <section className="section">
-          <div className="sectionHead">
-            <p className="eyebrow">Leagues and graduation</p>
-            <h2>Momentum moves from launchpad to arena.</h2>
-          </div>
-          <div className="statGrid">
-            <div>Battle-ready launch pages</div>
-            <div>Recruiter leaderboards</div>
-            <div>Squad coordination</div>
-            <div>Arena progression</div>
-            <div>Graduation tracks</div>
-            <div>Reward operations</div>
+        <section className="section" id="arena" aria-labelledby="arena-title">
+          <div className="arenaBlock">
+            <div className="arenaCopy">
+              <p className="eyebrow">Arena</p>
+              <h2 id="arena-title">After launch, tokens fight for visibility.</h2>
+              <p>
+                Tokens can enter the Arena, appear in battle lanes, compete on activity, collect UpVotes,
+                join events, and climb leaderboards. The goal is simple: make momentum visible.
+              </p>
+              <a className="button" href={`${appBaseUrl}/arena`}>
+                Explore Arena
+              </a>
+            </div>
+            <div className="featureStrip" aria-label="Arena features">
+              {arenaFeatures.map((feature) => (
+                <span key={feature}>{feature}</span>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section id="rewards" className="feature">
-          <div>
+        <section className="section" id="rewards" aria-labelledby="rewards-title">
+          <div className="sectionHeading">
             <p className="eyebrow">Rewards</p>
-            <h2>Recognition and claims stay connected to the battle.</h2>
-            <p>Recruiters, squads, and active contributors can compete for visible rank, claim windows, and reward operations tied to the field.</p>
+            <h2 id="rewards-title">When people help, the platform can track it.</h2>
+            <p>
+              Recruiters, squads, airdrop winners, league winners, active contributors, and creators can all have
+              reward paths connected to campaign activity.
+            </p>
           </div>
-          <a className="button" href={`${launchpadUrl}/airdrops`}>View Launchpad rewards</a>
+
+          <div className="rewardGrid">
+            {rewardTypes.map((reward) => (
+              <div className="rewardPill" key={reward}>
+                <IconCheck />
+                <span>{reward}</span>
+              </div>
+            ))}
+          </div>
+          <p className="disclaimer">
+            Rewards are not guaranteed. Eligibility depends on each campaign, active rules, and platform systems.
+          </p>
         </section>
 
-        <section className="finalCta">
-          <Trophy size={28} />
-          <p className="eyebrow">Ready for deployment</p>
-          <h2>Enter the warzone through the Launchpad.</h2>
-          <a className="button primary" href={launchpadUrl}>Launchpad <ArrowRight size={18} /></a>
+        <section className="section" aria-labelledby="faq-title">
+          <div className="sectionHeading centered">
+            <p className="eyebrow">FAQ</p>
+            <h2 id="faq-title">Questions before you enter?</h2>
+          </div>
+
+          <div className="faqGrid">
+            {faq.map((item) => (
+              <article className="faqItem" key={item.question}>
+                <h3>{item.question}</h3>
+                <p>{item.answer}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="finalCta" aria-labelledby="final-title">
+          <p className="eyebrow">Enter the Warzone</p>
+          <h2 id="final-title">Ready to launch, trade, or join the fight?</h2>
+          <p>
+            Start from the launchpad, explore active campaigns, or prepare your own coin for battle.
+          </p>
+          <div className="finalActions">
+            <a className="button buttonPrimary" href={appBaseUrl}>
+              Enter Launchpad <ArrowIcon />
+            </a>
+            <a className="button" href={`${appBaseUrl}/create`}>
+              Create a Coin
+            </a>
+            <a className="button" href={`${appBaseUrl}/arena`}>
+              Explore Arena
+            </a>
+          </div>
         </section>
       </main>
     </div>
   );
 }
 
-createRoot(document.getElementById("root")).render(<App />);
+createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);

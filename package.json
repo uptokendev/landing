@@ -1,7 +1,7 @@
 {
   "name": "memewarzone-landing",
   "version": "1.0.0",
-  "private": false,
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
@@ -13,8 +13,7 @@
     "vite": "latest",
     "typescript": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "lucide-react": "latest"
+    "react-dom": "latest"
   },
   "devDependencies": {}
 }
