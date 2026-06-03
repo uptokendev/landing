@@ -1,36 +1,27 @@
-# MemeWarzone Landing Page - Final Build
+# MemeWarzone Landing Page - Live War Console
 
 Standalone Vite + React landing page for `https://memewar.zone`.
 
 ## URLs
 
-- Landing/home/logo: `https://memewar.zone`
-- Launchpad/app CTAs: `https://app.memewar.zone`
+- Public landing page: `https://memewar.zone`
+- App and primary CTAs: `https://app.memewar.zone`
 
 ## Install
 
-```powershell
+```bash
 npm install
 npm run build
 npm run dev
 ```
 
-## Required assets
+## Build Direction
 
-Copy these into the repo if they are not already present:
-
-```text
-public/assets/hero/logo.png
-public/assets/hero/herobg.png
-```
-
-## Final positioning
-
-MemeWarzone helps meme coins build heat before bonding, then keep fighting for attention after bonding.
+This rebuild turns the public page into a motion-first command console. Every chapter has a moving system element: boot sequence, scanlines, radar, ticker, animated mission route, live battle state, war-room rows, reward router, squad ladder, league timer, or lock-on CTA.
 
 ## Notes
 
-- Terminology uses `pre-bonded` and `post-bonded` everywhere.
-- Sponsorship is positioned as sponsor-funded leagues, tournaments, and battles. It does not describe hidden placement or fake ranking.
-- Battle Pools are worded as a gated feature dependent on rules, eligibility, jurisdiction, and final platform configuration.
-- Recruiter Program and Squad Pool copy is clear, but still flexible enough for final contract/accounting configuration.
+- Hero image is eager-loaded; lower section images use lazy loading.
+- Reduced-motion users skip the boot overlay and get near-static effects.
+- Exact duplicate public images were removed while preserving distinct source artwork.
+- The Vite React plugin was removed because this app does not need it for JSX compilation.
