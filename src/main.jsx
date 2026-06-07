@@ -282,7 +282,7 @@ function ChapterRail() {
       {chapters.map(([number, title, id]) => (
         <a href={`#${id}`} key={id}>
           <span>{number}</span>
-          {title}
+          <b>{title}</b>
         </a>
       ))}
     </aside>
@@ -344,7 +344,7 @@ function LaunchEngine() {
       <ChapterLabel number="03" title="Launch Engine" />
       <div className="splitConsole">
         <div className="chapterIntro">
-          <GlitchText as="h2">Configure launch posture like a weapons system.</GlitchText>
+          <GlitchText as="h2">Launch like a weapons system.</GlitchText>
           <p>Modes shift chain, ticker, route profile, and visibility before the token reaches the open arena.</p>
           <div className="modeSelector">
             {Object.keys(launchModes).map((item) => (
@@ -514,7 +514,7 @@ function WarEconomy() {
       <ChapterLabel number="06" title="War Economy" />
       <div className="splitConsole">
         <div className="chapterIntro">
-          <GlitchText as="h2">Fee routing becomes visible battlefield logistics.</GlitchText>
+          <GlitchText as="h2">Fees become battlefield logistics.</GlitchText>
           <p>Trade volume flows into league prizes, recruiter lanes, airdrops, squads, and protocol reserves.</p>
           <label className="rangeControl">
             <span>Trade Volume</span>
@@ -597,7 +597,7 @@ function SeasonalWar() {
       <ChapterLabel number="08" title="Seasonal War" />
       <div className="splitConsole">
         <div className="chapterIntro">
-          <GlitchText as="h2">Graduation is the beginning of the real game.</GlitchText>
+          <GlitchText as="h2">Graduation is just the start.</GlitchText>
           <p>Divisions, promotion movement, prize pools, and seasonal timers keep post-grad coins fighting.</p>
           <HudFrame className="seasonTimer">
             <span>Season ends in</span>
@@ -633,7 +633,7 @@ function Deploy() {
       <ParallaxBackplate src="/images/landing/cta/red-battle-warrior.png" alt="Red MemeWarzone warrior poster" />
       <div className="deployInner">
         <ChapterLabel number="09" title="Deploy To War" />
-        <GlitchText as="h2">The launch is only the first battle.</GlitchText>
+        <GlitchText as="h2">Just the first battle.</GlitchText>
         <p>Deploy the campaign, open the war room, and keep fighting after graduation.</p>
         <div className="buttonRow">
           <MagneticCommandButton href={`${appUrl}/create`} variant="primary">
