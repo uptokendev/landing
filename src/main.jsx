@@ -83,11 +83,42 @@ const launchModes = {
   },
 };
 
+// Battle data mirrors the canonical participant-card shape from the post-grad
+// build plan: each side carries score, market cap, 24h volume and trader count,
+// with a derived leader. States follow the battle lifecycle (pending → settled).
 const battleStates = {
-  Open: [54, 46, "Opponent window open", "Awaiting lock"],
-  Matched: [58, 42, "Combatants matched", "Ticket feed live"],
-  Live: [71, 29, "Leader pulse active", "Momentum rising"],
-  Settling: [64, 36, "Oracle tally running", "Rewards pending"],
+  Open: {
+    status: "Open for Battle",
+    timer: "06:12",
+    challenger: { score: 0, mc: "$284K", vol: "$41K", traders: "612" },
+    defender: { score: 0, mc: "$310K", vol: "$52K", traders: "740" },
+    signal: "Opponent window open",
+    note: "Awaiting challenge lock",
+  },
+  Matched: {
+    status: "Matched",
+    timer: "04:48",
+    challenger: { score: 38, mc: "$291K", vol: "$96K", traders: "1,180" },
+    defender: { score: 34, mc: "$318K", vol: "$88K", traders: "1,320" },
+    signal: "Combatants matched",
+    note: "Score feed live",
+  },
+  Live: {
+    status: "Live",
+    timer: "01:54",
+    challenger: { score: 71, mc: "$352K", vol: "$240K", traders: "4,120" },
+    defender: { score: 58, mc: "$331K", vol: "$205K", traders: "3,880" },
+    signal: "Leader pulse active",
+    note: "Momentum rising",
+  },
+  Settled: {
+    status: "Settled",
+    timer: "00:00",
+    challenger: { score: 88, mc: "$408K", vol: "$612K", traders: "9,330" },
+    defender: { score: 71, mc: "$372K", vol: "$540K", traders: "8,120" },
+    signal: "Oracle tally complete",
+    note: "Rewards routing",
+  },
 };
 
 const warRows = [
@@ -379,7 +410,10 @@ function LaunchEngine() {
 
 function BattleArena() {
   const [state, setState] = useState("Live");
-  const [left, right, signal, note] = battleStates[state];
+  const active = battleStates[state];
+  const { status, timer, challenger, defender, signal, note } = active;
+  const leader = challenger.score === defender.score ? "tie" : challenger.score > defender.score ? "left" : "right";
+  const scoreTotal = challenger.score + defender.score || 1;
 
   useEffect(() => {
     const states = Object.keys(battleStates);
@@ -396,24 +430,35 @@ function BattleArena() {
       <HudFrame className="arenaConsole">
         <img src="/images/landing/arena/battle-arena.png" alt="MemeWarzone battle arena" loading="lazy" />
         <div className="arenaOverlay">
-          <div className="combatant">
-            <span>Challenger</span>
+          <div className={`combatant ${leader === "left" ? "isLeading" : ""}`}>
+            <span>Challenger{leader === "left" ? " · Leading" : ""}</span>
             <strong>$BURN</strong>
-            <em>{left}% pressure</em>
+            <em>Score {challenger.score}</em>
+            <ul className="combatantStats">
+              <li><b>MC</b> {challenger.mc}</li>
+              <li><b>24h Vol</b> {challenger.vol}</li>
+              <li><b>Traders</b> {challenger.traders}</li>
+            </ul>
           </div>
           <div className="versusLock">
             <span>VS</span>
             <i />
-            <strong>04:21</strong>
+            <strong>{timer}</strong>
+            <em className="battleStatus">{status}</em>
           </div>
-          <div className="combatant right">
-            <span>Defender</span>
+          <div className={`combatant right ${leader === "right" ? "isLeading" : ""}`}>
+            <span>{leader === "right" ? "Leading · " : ""}Defender</span>
             <strong>$RAID</strong>
-            <em>{right}% pressure</em>
+            <em>Score {defender.score}</em>
+            <ul className="combatantStats">
+              <li><b>MC</b> {defender.mc}</li>
+              <li><b>24h Vol</b> {defender.vol}</li>
+              <li><b>Traders</b> {defender.traders}</li>
+            </ul>
           </div>
           <div className="scoreBars">
-            <span style={{ width: `${left}%` }} />
-            <span style={{ width: `${right}%` }} />
+            <span style={{ width: `${(challenger.score / scoreTotal) * 100}%` }} />
+            <span style={{ width: `${(defender.score / scoreTotal) * 100}%` }} />
           </div>
         </div>
       </HudFrame>
@@ -428,8 +473,8 @@ function BattleArena() {
         <HudFrame className="eventLog">
           <span>{signal}</span>
           <span>{note}</span>
-          <span>BUY PRESSURE +12%</span>
-          <span>UPVOTES SPIKING</span>
+          <span>Leader: {leader === "tie" ? "Tied" : leader === "left" ? "$BURN" : "$RAID"}</span>
+          <span>Battle score {challenger.score}–{defender.score}</span>
         </HudFrame>
       </div>
     </section>

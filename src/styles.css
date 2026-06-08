@@ -1083,7 +1083,7 @@ main,
 
 .arenaConsole img {
   width: 100%;
-  aspect-ratio: 2.05 / 1;
+  aspect-ratio: 2.7 / 1;
   object-fit: cover;
   opacity: 0.9;
 }
@@ -1093,7 +1093,7 @@ main,
   inset: 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: end;
+  align-items: center;
   gap: 1rem;
   padding: clamp(1rem, 3vw, 2rem);
   background: linear-gradient(180deg, rgba(3, 4, 3, 0.02), rgba(3, 4, 3, 0.82));
@@ -1164,8 +1164,52 @@ main,
   animation: radarSpin 2.2s linear infinite;
 }
 
+.battleStatus {
+  display: block;
+  margin-top: 0.45rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(255, 153, 0, 0.22);
+  color: var(--green);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.combatantStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.82rem;
+}
+
+.combatant.right .combatantStats {
+  justify-content: flex-end;
+}
+
+.combatantStats li {
+  color: #ffe0ae;
+}
+
+.combatantStats b {
+  margin-right: 0.3rem;
+  color: var(--orange);
+  font-weight: inherit;
+}
+
+.combatant.isLeading {
+  border-color: var(--green);
+  box-shadow: 0 0 22px rgba(123, 255, 194, 0.18);
+}
+
+.combatant.isLeading span {
+  color: var(--green);
+}
+
 .scoreBars {
   grid-column: 1 / -1;
+  align-self: end;
   display: grid;
   gap: 0.5rem;
 }
@@ -1186,7 +1230,7 @@ main,
 
 .battleFooter {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.5fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-top: 1rem;
 }
