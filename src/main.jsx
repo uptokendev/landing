@@ -5,21 +5,22 @@ import "./styles.css";
 const appUrl = "https://app.memewar.zone";
 
 const chapters = [
-  ["01", "Command Entry", "entry"],
+  ["01", "Launchpad", "entry"],
   ["02", "Campaign Lifecycle", "lifecycle"],
   ["03", "Launch Engine", "launch-engine"],
   ["04", "Battle Arena", "battle-arena"],
-  ["05", "War Room", "war-room"],
-  ["06", "War Economy", "war-economy"],
-  ["07", "Squad Command", "squads"],
-  ["08", "Seasonal War", "seasonal-war"],
-  ["09", "Deploy To War", "deploy"],
+  ["05", "War Trade Room", "war-room"],
+  ["06", "Fee & Prize Routing", "war-economy"],
+  ["07", "Recruiters / Squads", "squads"],
+  ["08", "Major Leagues", "seasonal-war"],
+  ["09", "Enter MemeWarzone", "deploy"],
 ];
 
 const bootLines = [
   "INITIALIZING MEMEWARZONE",
   "SYNCING CHAINS",
   "LOADING BATTLEFIELD",
+  "REWARD ROUTER ONLINE",
   "WAR ROOM ONLINE",
 ];
 
@@ -40,12 +41,12 @@ const tickerItems = [
 ];
 
 const lifecycle = [
-  ["Prepare", "Build attention before the bond.", "37%"],
-  ["Launch", "Open the public campaign route.", "49%"],
-  ["Bond", "Turn heat into market pressure.", "61%"],
-  ["Graduate", "Carry momentum into the arena.", "73%"],
-  ["Battle", "Challenge rival coins in public.", "86%"],
-  ["Earn", "Route rewards to the war economy.", "100%"],
+  ["Prepare", "Build the campaign before launch.", "37%"],
+  ["Launch", "Collect follows, comments, shares, opt-ins, and heat.", "49%"],
+  ["Bond", "Launch on BNB or Solana through the bonding curve.", "61%"],
+  ["Graduate", "Move into the wider market with campaign signals already attached.", "73%"],
+  ["Battle", "Challenge other projects in 24h, 3-day, or 7-day fights.", "86%"],
+  ["Earn", "Compete through rewards, squads, sponsored prize pools, and seasonal leagues.", "100%"],
 ];
 
 const launchModes = {
@@ -58,23 +59,23 @@ const launchModes = {
     image: "/images/landing/prepare/multichain-launch-base.png",
   },
   "Bonding Curve": {
-    chain: "Base",
+    chain: "Solana",
     ticker: "$RAID",
     state: "Curve armed",
     visibility: "Live bonding",
     route: "Public push",
     image: "/images/landing/prepare/prebonded-launch-base.png",
   },
-  Graduated: {
-    chain: "Solana",
+  "Graduated": {
+    chain: "BNB",
     ticker: "$BURN",
     state: "DEX active",
     visibility: "Battle eligible",
     route: "Arena queue",
     image: "/images/landing/endgame/chain-roadmap-ui.png",
   },
-  "Post-Grad": {
-    chain: "Ethereum",
+  "Post-Bonded": {
+    chain: "Solana",
     ticker: "$CLANK",
     state: "League season",
     visibility: "Ranked campaign",
@@ -83,11 +84,42 @@ const launchModes = {
   },
 };
 
+// Battle data mirrors the canonical participant-card shape from the post-grad
+// build plan: each side carries score, market cap, 24h volume and trader count,
+// with a derived leader. States follow the battle lifecycle (pending → settled).
 const battleStates = {
-  Open: [54, 46, "Opponent window open", "Awaiting lock"],
-  Matched: [58, 42, "Combatants matched", "Ticket feed live"],
-  Live: [71, 29, "Leader pulse active", "Momentum rising"],
-  Settling: [64, 36, "Oracle tally running", "Rewards pending"],
+  Open: {
+    status: "Open for Battle",
+    timer: "06:12",
+    challenger: { score: 0, mc: "$284K", vol: "$41K", traders: "612" },
+    defender: { score: 0, mc: "$310K", vol: "$52K", traders: "740" },
+    signal: "Challenge sent",
+    note: "Entry deposited",
+  },
+  Matched: {
+    status: "Matched",
+    timer: "04:48",
+    challenger: { score: 38, mc: "$291K", vol: "$96K", traders: "1,180" },
+    defender: { score: 34, mc: "$318K", vol: "$88K", traders: "1,320" },
+    signal: "Opponent matched",
+    note: "Battle live",
+  },
+  Live: {
+    status: "Live",
+    timer: "01:54",
+    challenger: { score: 71, mc: "$352K", vol: "$240K", traders: "4,120" },
+    defender: { score: 58, mc: "$331K", vol: "$205K", traders: "3,880" },
+    signal: "Leader pulse active",
+    note: "Momentum rising",
+  },
+  Settled: {
+    status: "Settled",
+    timer: "00:00",
+    challenger: { score: 88, mc: "$408K", vol: "$612K", traders: "9,330" },
+    defender: { score: 71, mc: "$372K", vol: "$540K", traders: "8,120" },
+    signal: "Winner takes prize",
+    note: "Rewards routing",
+  },
 };
 
 const warRows = [
@@ -105,17 +137,17 @@ const routeProfiles = {
 };
 
 const ranks = [
-  ["Scout", "10 recruits", "Entry squad telemetry", 24],
+  ["Soldier", "10 recruits", "Entry squad telemetry", 24],
   ["Captain", "50 recruits", "Higher reward lane", 48],
   ["Commander", "150 recruits", "Squad pool multiplier", 72],
-  ["Warlord", "500 recruits", "Top-tier routing", 92],
+  ["General", "500 recruits", "Top-tier routing", 92],
 ];
 
 const divisions = [
   ["Alpha", "$BURN", "Promoting", 88],
   ["Bravo", "$RAID", "Holding", 73],
-  ["Charlie", "$CLANK", "Relegation risk", 41],
-  ["Delta", "$VOLT", "Prize lane", 66],
+  ["Charlie", "$CLANK", "Volume incoming", 41],
+  ["Delta", "$VOLT", "Community vote", 66],
 ];
 
 function Arrow() {
@@ -282,7 +314,7 @@ function ChapterRail() {
       {chapters.map(([number, title, id]) => (
         <a href={`#${id}`} key={id}>
           <span>{number}</span>
-          {title}
+          <b>{title}</b>
         </a>
       ))}
     </aside>
@@ -292,7 +324,7 @@ function ChapterRail() {
 function Hero() {
   return (
     <section className="hero" id="entry">
-      <ParallaxBackplate src="/images/landing/hero/hero-battlefield.png" alt="MemeWarzone battlefield command entry" priority />
+      <ParallaxBackplate src="/images/landing/hero/hero-battlefield.png" alt="MemeWarzone battlefield MemeCoin Launchpad" priority />
       <ParallaxBackplate src="/images/landing/hero/real-competition-wide.png" className="depthPlate" priority />
       <RadarSweep />
       <div className="heroInner">
@@ -302,14 +334,14 @@ function Hero() {
           ))}
         </div>
         <div className="heroCopy">
-          <ChapterLabel number="01" title="Command Entry" />
+          <ChapterLabel number="01" title="MemeCoin Launchpad" />
           <GlitchText as="h1">MemeWarzone</GlitchText>
-          <p>Launch. Bond. Graduate. Then keep fighting.</p>
+          <p>MemeWarzone is a multichain meme coin launchpad where projects can build a live promotion page, collect follows, comments, shares, opt-ins, and heat before launch, bond on BNB or Solana, then keep competing through money-backed battles, squads, sponsored prize pools, tournaments, and monthly or quarterly points leagues.</p>
           <div className="buttonRow">
             <MagneticCommandButton href={appUrl} variant="primary">
-              Enter App <Arrow />
+              Enter Launchpad <Arrow />
             </MagneticCommandButton>
-            <MagneticCommandButton href="#lifecycle">View War Plan</MagneticCommandButton>
+            <MagneticCommandButton href="#lifecycle">See How It Works</MagneticCommandButton>
           </div>
         </div>
       </div>
@@ -325,11 +357,11 @@ function Lifecycle() {
       <ParallaxBackplate src="/images/landing/prepare/promotion-command-room.png" className="sectionBackplate right" />
       <ChapterLabel number="02" title="Campaign Lifecycle" />
       <div className="chapterIntro">
-        <GlitchText as="h2">Prepare. Launch. Bond. Graduate. Battle. Earn.</GlitchText>
-        <p>A mission map for the full meme coin lifecycle, from first campaign heat to league rewards.</p>
+        <GlitchText as="h2">MemeCoin Lifecycle</GlitchText>
+        <p>Projects build heat before launch, bond on BNB or Solana, graduate with public campaign signals already attached, then keep fighting through battles, squads, sponsored prize pools, tournaments, and seasonal points leagues.</p>
       </div>
       <MissionRail />
-      <div className="warningStrip">ROUTE ARMED / HEAT SIGNALS ACTIVE / GRADUATION DOES NOT END THE CAMPAIGN</div>
+      <div className="warningStrip">BUILD HEAT / BOND ON BNB OR SOLANA / GRADUATION DOES NOT END THE CAMPAIGN</div>
     </section>
   );
 }
@@ -344,8 +376,8 @@ function LaunchEngine() {
       <ChapterLabel number="03" title="Launch Engine" />
       <div className="splitConsole">
         <div className="chapterIntro">
-          <GlitchText as="h2">Configure launch posture like a weapons system.</GlitchText>
-          <p>Modes shift chain, ticker, route profile, and visibility before the token reaches the open arena.</p>
+          <GlitchText as="h2">Launch like a weapons system.</GlitchText>
+          <p>MemeWarzone launches multichain on BNB and Solana with promotion pages, bonding curves, UpVotes, recruiter squads, rewards, battles, and leagues. Base, Ethereum, Tron, Polygon, and TON follow as roadmap targets.</p>
           <div className="modeSelector">
             {Object.keys(launchModes).map((item) => (
               <MagneticCommandButton key={item} onClick={() => setMode(item)} variant={mode === item ? "active" : ""}>
@@ -367,7 +399,7 @@ function LaunchEngine() {
             <div><dt>Route Profile</dt><dd>{active.route}</dd></div>
           </dl>
           <div className="chainMarquee">
-            {["BNB", "SOL", "BASE", "ETH", "TRON", "TON", "POLY", "BNB", "SOL", "BASE"].map((chain, index) => (
+            {["BNB", "SOL", "BASE", "ETH", "TRON", "TON", "POLY", "MEMEWARZONE BRIDGE"].map((chain, index) => (
               <span key={`${chain}-${index}`}>{chain}</span>
             ))}
           </div>
@@ -379,7 +411,10 @@ function LaunchEngine() {
 
 function BattleArena() {
   const [state, setState] = useState("Live");
-  const [left, right, signal, note] = battleStates[state];
+  const active = battleStates[state];
+  const { status, timer, challenger, defender, signal, note } = active;
+  const leader = challenger.score === defender.score ? "tie" : challenger.score > defender.score ? "left" : "right";
+  const scoreTotal = challenger.score + defender.score || 1;
 
   useEffect(() => {
     const states = Object.keys(battleStates);
@@ -396,24 +431,35 @@ function BattleArena() {
       <HudFrame className="arenaConsole">
         <img src="/images/landing/arena/battle-arena.png" alt="MemeWarzone battle arena" loading="lazy" />
         <div className="arenaOverlay">
-          <div className="combatant">
-            <span>Challenger</span>
+          <div className={`combatant ${leader === "left" ? "isLeading" : ""}`}>
+            <span>Challenger{leader === "left" ? " · Leading" : ""}</span>
             <strong>$BURN</strong>
-            <em>{left}% pressure</em>
+            <em>Score {challenger.score}</em>
+            <ul className="combatantStats">
+              <li><b>MC</b> {challenger.mc}</li>
+              <li><b>24h Vol</b> {challenger.vol}</li>
+              <li><b>Traders</b> {challenger.traders}</li>
+            </ul>
           </div>
           <div className="versusLock">
             <span>VS</span>
             <i />
-            <strong>04:21</strong>
+            <strong>{timer}</strong>
+            <em className="battleStatus">{status}</em>
           </div>
-          <div className="combatant right">
-            <span>Defender</span>
+          <div className={`combatant right ${leader === "right" ? "isLeading" : ""}`}>
+            <span>{leader === "right" ? "Leading · " : ""}Defender</span>
             <strong>$RAID</strong>
-            <em>{right}% pressure</em>
+            <em>Score {defender.score}</em>
+            <ul className="combatantStats">
+              <li><b>MC</b> {defender.mc}</li>
+              <li><b>24h Vol</b> {defender.vol}</li>
+              <li><b>Traders</b> {defender.traders}</li>
+            </ul>
           </div>
           <div className="scoreBars">
-            <span style={{ width: `${left}%` }} />
-            <span style={{ width: `${right}%` }} />
+            <span style={{ width: `${(challenger.score / scoreTotal) * 100}%` }} />
+            <span style={{ width: `${(defender.score / scoreTotal) * 100}%` }} />
           </div>
         </div>
       </HudFrame>
@@ -428,8 +474,8 @@ function BattleArena() {
         <HudFrame className="eventLog">
           <span>{signal}</span>
           <span>{note}</span>
-          <span>BUY PRESSURE +12%</span>
-          <span>UPVOTES SPIKING</span>
+          <span>Leader: {leader === "tie" ? "Tied" : leader === "left" ? "$BURN" : "$RAID"}</span>
+          <span>Battle score {challenger.score}–{defender.score}</span>
         </HudFrame>
       </div>
     </section>
@@ -454,15 +500,15 @@ function WarRoom() {
   return (
     <section className="chapter warRoom" id="war-room">
       <ParallaxBackplate src="/images/landing/war-room/heatmap-ui.png" className="sectionBackplate wide heat" />
-      <ChapterLabel number="05" title="War Room" />
+      <ChapterLabel number="05" title="War Trade Room" />
       <div className="splitConsole reverse">
         <HudFrame className="warTable">
           <div className="panelHeader">
-            <span>MWZ/WAR-ROOM</span>
+            <span>MWZ/WAR-TRADE-ROOM</span>
             <StatusPill>{filter}</StatusPill>
           </div>
           <div className="filterRow">
-            {["Trending", "Near Graduation", "In Battle", "Graduated"].map((item) => (
+            {["Trending", "Near bonding", "In Battle", "Graduated"].map((item) => (
               <MagneticCommandButton key={item} onClick={() => setFilter(item)} variant={filter === item ? "active" : ""}>
                 {item}
               </MagneticCommandButton>
@@ -514,12 +560,12 @@ function WarEconomy() {
       <ChapterLabel number="06" title="War Economy" />
       <div className="splitConsole">
         <div className="chapterIntro">
-          <GlitchText as="h2">Fee routing becomes visible battlefield logistics.</GlitchText>
-          <p>Trade volume flows into league prizes, recruiter lanes, airdrops, squads, and protocol reserves.</p>
+          <GlitchText as="h2">Fees become battlefield logistics.</GlitchText>
+          <p>MemeWarzone connects platform activity to visible reward paths: creator fee share, recruiter rewards, Squad Pool, league prizes, tournament prizes, airdrops, and sponsored prize pools.</p>
           <label className="rangeControl">
             <span>Trade Volume</span>
             <AnimatedCounter value={volume} prefix="$" />
-            <input min="10000" max="250000" step="5000" type="range" value={volume} onChange={(event) => setVolume(Number(event.target.value))} />
+            <input min="10000" max="2500000" step="5000" type="range" value={volume} onChange={(event) => setVolume(Number(event.target.value))} />
           </label>
           <div className="modeSelector">
             {Object.keys(routeProfiles).map((item) => (
@@ -594,11 +640,11 @@ function SeasonalWar() {
   return (
     <section className="chapter seasonalWar" id="seasonal-war">
       <ParallaxBackplate src="/images/landing/endgame/final-army.png" className="sectionBackplate wide" />
-      <ChapterLabel number="08" title="Seasonal War" />
+      <ChapterLabel number="08" title="Major War Leagues" />
       <div className="splitConsole">
         <div className="chapterIntro">
-          <GlitchText as="h2">Graduation is the beginning of the real game.</GlitchText>
-          <p>Divisions, promotion movement, prize pools, and seasonal timers keep post-grad coins fighting.</p>
+          <GlitchText as="h2">Graduation is just the start.</GlitchText>
+          <p>Projects, traders, recruiters, and squads gather points by being active on MemeWarzone. Monthly leagues create frequent winner moments. Quarterly championships create bigger seasonal battles.</p>
           <HudFrame className="seasonTimer">
             <span>Season ends in</span>
             <strong>13D : 04H : 21M</strong>
@@ -632,17 +678,147 @@ function Deploy() {
     <section className="deploy" id="deploy">
       <ParallaxBackplate src="/images/landing/cta/red-battle-warrior.png" alt="Red MemeWarzone warrior poster" />
       <div className="deployInner">
-        <ChapterLabel number="09" title="Deploy To War" />
-        <GlitchText as="h2">The launch is only the first battle.</GlitchText>
-        <p>Deploy the campaign, open the war room, and keep fighting after graduation.</p>
+        <ChapterLabel number="09" title="Enter MemeWarzone" />
+        <GlitchText as="h1">The launch is only the first battle.</GlitchText>
+        <p>Build heat before bonding, launch stronger on BNB or Solana, then keep fighting for attention through battles, squads, leagues, tournaments, and sponsored prize pools.</p>
         <div className="buttonRow">
           <MagneticCommandButton href={`${appUrl}/create`} variant="primary">
             Deploy To War <Arrow />
           </MagneticCommandButton>
-          <MagneticCommandButton href={appUrl}>Open War Room</MagneticCommandButton>
+          <MagneticCommandButton href={appUrl}>Open the warzone</MagneticCommandButton>
         </div>
       </div>
     </section>
+  );
+}
+
+// Newsletter uses the dedicated clean handler on the shared Railway API (MemeBattles dev).
+// This endpoint sends a simple "thank you for the newsletter" email only.
+// It does NOT trigger the heavy recruiter access / portal email from the old comingsoon flow.
+const RAILWAY_API_BASE = import.meta.env.VITE_RAILWAY_API_BASE || "https://memewarzonefrontend-production.up.railway.app";
+
+function Newsletter() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const isValid = (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(val || "").trim());
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const trimmed = email.trim();
+
+    if (!isValid(trimmed)) {
+      setErrorMsg("Enter a valid email.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("loading");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch(`${RAILWAY_API_BASE}/api/newsletter`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        setEmail("");
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setErrorMsg(data?.error || "Transmission failed. Try again.");
+        setStatus("error");
+      }
+    } catch (err) {
+      setErrorMsg("Network error. Try again.");
+      setStatus("error");
+    }
+  }
+
+  function resetForm() {
+    setStatus("idle");
+    setErrorMsg("");
+    setEmail("");
+  }
+
+  return (
+    <section className="newsletter" aria-labelledby="dispatch-title">
+      <div className="newsletterInner">
+        <div className="chapterLabel">
+          <span style={{ color: "var(--orange)" }}>SIGNAL</span>
+          <span>WAR ROOM DISPATCH</span>
+        </div>
+
+        <div className="chapterIntro" style={{ marginBottom: "1.25rem" }}>
+          <GlitchText as="h2" id="dispatch-title">Frontline intel. Straight to your inbox.</GlitchText>
+          <p>Stay updated in the Warzone. Newsletters, product updates, and exclusive content delivered directly to your inbox.</p>
+        </div>
+
+        <HudFrame className="newsletterPanel">
+          {status === "success" ? (
+            <div className="dispatchSuccess">
+              <StatusPill style={{ borderColor: "var(--green)", color: "var(--green)" }}>
+                <i style={{ background: "var(--green)" }} />
+                SUBSCRIBED
+              </StatusPill>
+              <strong>Transmission received.</strong>
+              <p>You are now tuned to the MemeWarzone frequency. Check your inbox for the confirmation dispatch.</p>
+              <button type="button" className="commandButton" onClick={resetForm} style={{ marginTop: "0.75rem" }}>
+                Subscribe another operator
+              </button>
+            </div>
+          ) : (
+            <form className="dispatchForm" onSubmit={handleSubmit} noValidate>
+              <div className="dispatchInputWrap">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (status === "error") setStatus("idle");
+                  }}
+                  placeholder="OPERATOR@MEMEWAR.ZONE"
+                  aria-label="Email address for dispatches"
+                  disabled={status === "loading"}
+                  required
+                />
+              </div>
+
+              <MagneticCommandButton
+                onClick={undefined}
+                variant={status === "loading" ? "active" : ""}
+                type="submit"
+                disabled={status === "loading" || !email.trim()}
+              >
+                {status === "loading" ? "LOCKING IN..." : "SUBSCRIBE TO DISPATCH"}
+              </MagneticCommandButton>
+
+              {status === "error" && errorMsg ? (
+                <div className="dispatchError">{errorMsg}</div>
+              ) : null}
+            </form>
+          )}
+        </HudFrame>
+
+        <div className="warningStrip" style={{ marginTop: "1rem", fontSize: "0.9rem" }}>
+          WE DO NOT SPAM. UNSUBSCRIBE ANYTIME. YOUR DATA STAYS IN THE WAR ROOM.
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SiteFooter() {
+  const year = new Date().getFullYear();
+  return (
+    <footer className="siteFooter">
+      <div>
+        © {year} MEMEWARZONE. ALL RIGHTS RESERVED. • BUILT FOR THE BATTLEFIELD
+      </div>
+    </footer>
   );
 }
 
@@ -664,7 +840,7 @@ function App() {
           ))}
         </nav>
         <MagneticCommandButton href={appUrl} variant="nav">
-          Enter App
+          Enter Launchpad
         </MagneticCommandButton>
       </header>
       <main>
@@ -677,7 +853,9 @@ function App() {
         <Squads />
         <SeasonalWar />
         <Deploy />
+        <Newsletter />
       </main>
+      <SiteFooter />
     </div>
   );
 }

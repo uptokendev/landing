@@ -11,9 +11,20 @@
   --orange-soft: rgba(255, 153, 0, 0.16);
   --red: #ff3428;
   --green: #7bffc2;
-  --font-display: "PixelGame", "Pixeboy", "Impact", Inter, ui-sans-serif, system-ui, sans-serif;
-  --font-headline: Inter, "Arial Black", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
-  --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display:
+    "PixelGame", "Pixeboy", "Impact", Inter, ui-sans-serif, system-ui,
+    sans-serif;
+  --font-headline:
+    Inter, "Arial Black", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-body:
+    Inter, Satoshi, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Readable war/tactical UI labels (ChapterLabel, command buttons, status pills, panel headers, etc.).
+     Rajdhani (used in main frontend) + Inter fallback. Much more legible on desktop/mobile
+     than pure pixel fonts while staying in the military/command style. */
+  --font-label:
+    "Rajdhani", "Barlow Condensed", Inter, ui-sans-serif, system-ui, sans-serif;
 }
 
 @font-face {
@@ -56,11 +67,20 @@ body {
   margin: 0;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 12% 8%, rgba(255, 153, 0, 0.18), transparent 30rem),
-    radial-gradient(circle at 82% 2%, rgba(123, 255, 194, 0.08), transparent 28rem),
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(255, 153, 0, 0.18),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 82% 2%,
+      rgba(123, 255, 194, 0.08),
+      transparent 28rem
+    ),
     linear-gradient(180deg, #050604, #020302 44%, #060504);
   color: var(--ink);
   font-family: var(--font-body);
+  letter-spacing: 0;
 }
 
 body::selection {
@@ -95,21 +115,43 @@ p {
 }
 
 .brand,
-.topNav,
-.chapterRail,
-.chapterLabel,
-.commandButton,
-.statusPill,
-.battleTicker,
-.dataGrid,
-.panelHeader,
-.tokenRow,
 .squadCount,
 .seasonTimer,
 .prizeCounter {
-  font-family: var(--font-display);
-  letter-spacing: 0;
+  font-family: var(--font-label);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+/* Small-to-medium UI labels, command buttons, status, and panel headers now use
+   a dedicated legible war-style font instead of the heavy pixel display font.
+   This keeps the overall aesthetic but dramatically improves readability
+   on desktop and especially mobile, while staying aligned with the main app. */
+.chapterLabel,
+.commandButton,
+.statusPill,
+.panelHeader,
+.topNav,
+.chapterRail,
+.battleTicker,
+.dataGrid,
+.tokenRow,
+.combatant,
+.eventLog,
+.routeLine {
+  font-family: var(--font-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Make the Rajdhani-style label font slightly smaller overall for better fit
+   with the dense HUD style and to improve readability on small screens. */
+.dataGrid,
+.tokenRow,
+.routeLine,
+.combatantStats,
+.eventLog {
+  font-size: 0.9rem;
 }
 
 h1,
@@ -126,7 +168,9 @@ h1 {
   font-size: clamp(3.2rem, 10vw, 10.8rem);
   font-weight: 800;
   line-height: 0.84;
-  text-shadow: 0 0 22px rgba(255, 153, 0, 0.45), 0 10px 50px rgba(0, 0, 0, 0.8);
+  text-shadow:
+    0 0 22px rgba(255, 153, 0, 0.45),
+    0 10px 50px rgba(0, 0, 0, 0.8);
 }
 
 h2 {
@@ -149,6 +193,14 @@ h3 {
 p {
   color: var(--muted);
   line-height: 1.58;
+}
+
+/* Regular body text (non-explainer, non-headline) to better match main frontend tactical skin */
+p:not(.chapterIntro p):not(.heroCopy p):not(.deployInner p),
+.dispatchSuccess p,
+.siteFooter {
+  font-family: Inter, Satoshi, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
 }
 
 .siteShell {
@@ -221,11 +273,13 @@ main,
   justify-content: center;
   gap: clamp(0.55rem, 1.55vw, 1.2rem);
   color: rgba(247, 239, 227, 0.68);
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .topNav nav a {
-  transition: color 160ms ease, text-shadow 160ms ease;
+  transition:
+    color 160ms ease,
+    text-shadow 160ms ease;
 }
 
 .topNav nav a:hover {
@@ -245,17 +299,28 @@ main,
 
 .chapterRail a {
   display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: 0.5rem;
-  width: 170px;
-  padding: 0.42rem 0.5rem;
+  grid-template-columns: 32px 1fr;
+  align-items: center;
+  gap: 0.35rem;
+  width: 196px;
+  padding: 0.6rem 0.7rem;
   border: 1px solid rgba(255, 153, 0, 0.18);
   background: rgba(3, 4, 3, 0.6);
   color: rgba(247, 239, 227, 0.58);
-  font-size: 0.86rem;
-  line-height: 0.9;
+  font-size: 0.88rem;
+  line-height: 0.95;
   backdrop-filter: blur(10px);
-  transition: border-color 160ms ease, color 160ms ease, transform 160ms ease, background 160ms ease;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease,
+    background 160ms ease,
+    width 180ms ease;
+}
+
+.chapterRail a b {
+  font-weight: inherit;
+  white-space: nowrap;
 }
 
 .chapterRail a:hover {
@@ -267,6 +332,8 @@ main,
 
 .chapterRail span {
   color: var(--orange);
+  font-size: 1.18rem;
+  text-align: center;
 }
 
 .bootSequence {
@@ -276,7 +343,9 @@ main,
   display: grid;
   place-items: center;
   background: #020302;
-  transition: opacity 500ms ease, visibility 500ms ease;
+  transition:
+    opacity 500ms ease,
+    visibility 500ms ease;
 }
 
 .bootSequence.isDone {
@@ -289,7 +358,14 @@ main,
   padding: 1.2rem;
   border: 1px solid var(--line);
   background: rgba(8, 10, 8, 0.86);
-  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+  clip-path: polygon(
+    18px 0,
+    100% 0,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    0 100%,
+    0 18px
+  );
   box-shadow: 0 0 36px rgba(255, 153, 0, 0.18);
 }
 
@@ -297,14 +373,14 @@ main,
   display: block;
   margin-bottom: 1rem;
   color: var(--green);
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 1.1rem;
 }
 
 .bootPanel p {
   margin: 0.4rem 0;
   color: #ffdda5;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: clamp(1.4rem, 4vw, 2.8rem);
   line-height: 0.9;
   opacity: 0;
@@ -324,7 +400,11 @@ main,
 }
 
 .scanlineOverlay {
-  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 7px);
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.05) 0 1px,
+    transparent 1px 7px
+  );
   mix-blend-mode: overlay;
   opacity: 0.22;
   animation: scanMove 8s linear infinite;
@@ -333,10 +413,25 @@ main,
 .noiseLayer {
   opacity: 0.1;
   background-image:
-    radial-gradient(circle at 14% 12%, rgba(255, 255, 255, 0.85) 0 1px, transparent 1px),
-    radial-gradient(circle at 72% 28%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1px),
-    radial-gradient(circle at 39% 76%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1px);
-  background-size: 82px 82px, 116px 116px, 154px 154px;
+    radial-gradient(
+      circle at 14% 12%,
+      rgba(255, 255, 255, 0.85) 0 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 72% 28%,
+      rgba(255, 255, 255, 0.7) 0 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 39% 76%,
+      rgba(255, 255, 255, 0.7) 0 1px,
+      transparent 1px
+    );
+  background-size:
+    82px 82px,
+    116px 116px,
+    154px 154px;
   animation: noiseShift 900ms steps(2) infinite;
 }
 
@@ -377,8 +472,9 @@ main,
   gap: 0.75rem;
   margin-bottom: 1.1rem;
   color: #ffe1ae;
-  font-size: 1.06rem;
+  font-size: 0.95rem;
   line-height: 1;
+  /* inherits the more legible --font-label from the dedicated rule above */
 }
 
 .chapterLabel span:first-child {
@@ -430,7 +526,14 @@ main,
 .heroInner::before {
   inset: 100px 0 84px;
   border: 1px solid rgba(255, 153, 0, 0.28);
-  clip-path: polygon(28px 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%, 0 28px);
+  clip-path: polygon(
+    28px 0,
+    100% 0,
+    100% calc(100% - 28px),
+    calc(100% - 28px) 100%,
+    0 100%,
+    0 28px
+  );
   animation: borderPulse 2.6s ease-in-out infinite;
 }
 
@@ -471,10 +574,33 @@ main,
     rgba(3, 4, 3, 0.68);
   color: #fff0d0;
   cursor: pointer;
-  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-  font-size: 1.02rem;
+  clip-path: polygon(
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%,
+    0 12px
+  );
+  font-size: 0.92rem;
   line-height: 1;
-  transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.buttonRow .commandButton {
+  min-height: 58px;
+  padding: 0 1.8rem;
+  font-size: 1.06rem;
+}
+
+.buttonRow .commandButton svg {
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .commandButton svg {
@@ -495,7 +621,10 @@ main,
   inset: 5px;
   border: 1px solid transparent;
   opacity: 0;
-  transition: opacity 180ms ease, transform 180ms ease, border-color 180ms ease;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    border-color 180ms ease;
 }
 
 .commandButton::before {
@@ -529,7 +658,11 @@ main,
 }
 
 .commandButton.primary {
-  background: linear-gradient(180deg, rgba(255, 153, 0, 0.5), rgba(255, 61, 43, 0.16));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 153, 0, 0.5),
+    rgba(255, 61, 43, 0.16)
+  );
 }
 
 .commandButton.nav {
@@ -547,7 +680,14 @@ main,
   color: #c9ffe6;
   font-size: 0.92rem;
   line-height: 1;
-  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  clip-path: polygon(
+    8px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    0 100%,
+    0 8px
+  );
 }
 
 .statusPill i {
@@ -586,8 +726,18 @@ main,
 
 .backplate span {
   background:
-    linear-gradient(90deg, rgba(3, 4, 3, 0.88), rgba(3, 4, 3, 0.4) 46%, rgba(3, 4, 3, 0.7)),
-    linear-gradient(180deg, rgba(3, 4, 3, 0.18), rgba(3, 4, 3, 0.76) 76%, var(--bg));
+    linear-gradient(
+      90deg,
+      rgba(3, 4, 3, 0.88),
+      rgba(3, 4, 3, 0.4) 46%,
+      rgba(3, 4, 3, 0.7)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 4, 3, 0.18),
+      rgba(3, 4, 3, 0.76) 76%,
+      var(--bg)
+    );
 }
 
 .depthPlate {
@@ -639,7 +789,12 @@ main,
   border-radius: 50%;
   background:
     radial-gradient(circle, rgba(123, 255, 194, 0.16) 0 2px, transparent 3px),
-    repeating-radial-gradient(circle, transparent 0 16%, rgba(123, 255, 194, 0.16) 16.5% 17%, transparent 17.5% 32%);
+    repeating-radial-gradient(
+      circle,
+      transparent 0 16%,
+      rgba(123, 255, 194, 0.16) 16.5% 17%,
+      transparent 17.5% 32%
+    );
   opacity: 0.72;
 }
 
@@ -658,7 +813,11 @@ main,
   left: 50%;
   width: 50%;
   height: 2px;
-  background: linear-gradient(90deg, rgba(123, 255, 194, 0.95), rgba(123, 255, 194, 0));
+  background: linear-gradient(
+    90deg,
+    rgba(123, 255, 194, 0.95),
+    rgba(123, 255, 194, 0)
+  );
   box-shadow: 0 0 14px rgba(123, 255, 194, 0.72);
   transform: translateY(-50%);
   transform-origin: 0 50%;
@@ -737,10 +896,13 @@ main,
   padding: 0.75rem 1rem;
   overflow: hidden;
   border: 1px solid rgba(255, 153, 0, 0.36);
-  background:
-    repeating-linear-gradient(135deg, rgba(255, 153, 0, 0.18) 0 12px, rgba(3, 4, 3, 0.7) 12px 24px);
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(255, 153, 0, 0.18) 0 12px,
+    rgba(3, 4, 3, 0.7) 12px 24px
+  );
   color: #ffe1ae;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: clamp(1rem, 2vw, 1.6rem);
   text-align: center;
 }
@@ -759,11 +921,16 @@ main,
 .missionRail::before {
   content: "";
   position: absolute;
-  top: 42px;
-  left: 7%;
-  width: 86%;
+  top: 37px;
+  left: calc(1rem + 12px);
+  width: calc(500% / 6);
   height: 2px;
-  background: linear-gradient(90deg, var(--orange), var(--green), var(--orange));
+  background: linear-gradient(
+    90deg,
+    var(--orange),
+    var(--green),
+    var(--orange)
+  );
   transform-origin: left;
   animation: routeTrace 4.8s ease-in-out infinite;
 }
@@ -771,7 +938,7 @@ main,
 .missionRail article {
   position: relative;
   min-height: 214px;
-  padding: 1.1rem;
+  padding: 4.9rem 1.1rem 1.1rem;
   overflow: hidden;
   background: rgba(5, 6, 5, 0.86);
   animation: nodeWake 700ms ease both;
@@ -781,10 +948,10 @@ main,
 .missionRail article::before {
   content: "";
   position: absolute;
-  top: 34px;
+  top: 26px;
   left: 1rem;
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   border: 2px solid var(--orange);
   background: #080906;
   box-shadow: 0 0 14px rgba(255, 153, 0, 0.7);
@@ -792,11 +959,19 @@ main,
 }
 
 .missionRail article span {
-  display: block;
-  margin-bottom: 3.8rem;
+  position: absolute;
+  top: 26px;
+  left: 1rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 32px;
+  margin: 0;
   color: var(--orange);
-  font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-family: var(--font-label);
+  font-size: 0.82rem;
+  line-height: 1;
 }
 
 .missionRail article p {
@@ -829,6 +1004,10 @@ main,
   grid-template-columns: minmax(360px, 0.78fr) minmax(0, 0.95fr);
 }
 
+.seasonalWar .splitConsole {
+  align-items: start;
+}
+
 .hudFrame {
   position: relative;
   overflow: hidden;
@@ -836,8 +1015,17 @@ main,
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent),
     var(--panel);
-  clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px);
-  box-shadow: inset 0 0 44px rgba(255, 153, 0, 0.06), 0 20px 80px rgba(0, 0, 0, 0.25);
+  clip-path: polygon(
+    22px 0,
+    100% 0,
+    100% calc(100% - 22px),
+    calc(100% - 22px) 100%,
+    0 100%,
+    0 22px
+  );
+  box-shadow:
+    inset 0 0 44px rgba(255, 153, 0, 0.06),
+    0 20px 80px rgba(0, 0, 0, 0.25);
 }
 
 .hudFrame::before {
@@ -847,7 +1035,12 @@ main,
 }
 
 .hudFrame::after {
-  background: linear-gradient(90deg, transparent, rgba(255, 153, 0, 0.08), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 153, 0, 0.08),
+    transparent
+  );
   transform: translateX(-100%);
   animation: panelShimmer 4.6s linear infinite;
 }
@@ -914,7 +1107,7 @@ main,
   border: 1px solid rgba(255, 153, 0, 0.24);
   background: rgba(255, 153, 0, 0.08);
   color: #ffe1ae;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   text-align: center;
   animation: chainFloat 2.8s ease-in-out infinite alternate;
 }
@@ -928,7 +1121,7 @@ main,
 
 .arenaConsole img {
   width: 100%;
-  aspect-ratio: 2.05 / 1;
+  aspect-ratio: 2.7 / 1;
   object-fit: cover;
   opacity: 0.9;
 }
@@ -938,7 +1131,7 @@ main,
   inset: 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: end;
+  align-items: center;
   gap: 1rem;
   padding: clamp(1rem, 3vw, 2rem);
   background: linear-gradient(180deg, rgba(3, 4, 3, 0.02), rgba(3, 4, 3, 0.82));
@@ -949,9 +1142,16 @@ main,
   border: 1px solid rgba(255, 153, 0, 0.36);
   background: rgba(3, 4, 3, 0.72);
   padding: 1rem;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   text-transform: uppercase;
-  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%,
+    0 14px
+  );
 }
 
 .combatant span,
@@ -1002,8 +1202,52 @@ main,
   animation: radarSpin 2.2s linear infinite;
 }
 
+.battleStatus {
+  display: block;
+  margin-top: 0.45rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(255, 153, 0, 0.22);
+  color: var(--green);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.combatantStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.82rem;
+}
+
+.combatant.right .combatantStats {
+  justify-content: flex-end;
+}
+
+.combatantStats li {
+  color: #ffe0ae;
+}
+
+.combatantStats b {
+  margin-right: 0.3rem;
+  color: var(--orange);
+  font-weight: inherit;
+}
+
+.combatant.isLeading {
+  border-color: var(--green);
+  box-shadow: 0 0 22px rgba(123, 255, 194, 0.18);
+}
+
+.combatant.isLeading span {
+  color: var(--green);
+}
+
 .scoreBars {
   grid-column: 1 / -1;
+  align-self: end;
   display: grid;
   gap: 0.5rem;
 }
@@ -1012,7 +1256,9 @@ main,
   display: block;
   height: 10px;
   background: linear-gradient(90deg, var(--orange), var(--red));
-  animation: fillBar 700ms ease both, dataShimmer 2.4s linear infinite;
+  animation:
+    fillBar 700ms ease both,
+    dataShimmer 2.4s linear infinite;
 }
 
 .scoreBars span + span {
@@ -1022,7 +1268,7 @@ main,
 
 .battleFooter {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.5fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-top: 1rem;
 }
@@ -1032,7 +1278,7 @@ main,
   gap: 0.36rem;
   padding: 0.8rem;
   color: #ffe1ae;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 1rem;
 }
 
@@ -1051,7 +1297,7 @@ main,
 .filterRow .commandButton,
 .modeSelector .commandButton {
   min-height: 40px;
-  font-size: 0.96rem;
+  font-size: 0.88rem;
 }
 
 .tokenRows {
@@ -1116,7 +1362,14 @@ main,
   position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
-  clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px);
+  clip-path: polygon(
+    22px 0,
+    100% 0,
+    100% calc(100% - 22px),
+    calc(100% - 22px) 100%,
+    0 100%,
+    0 22px
+  );
 }
 
 .productSurface img,
@@ -1146,6 +1399,7 @@ main,
 .miniChart span {
   flex: 1;
   background: linear-gradient(180deg, var(--green), rgba(255, 153, 0, 0.3));
+  transform-origin: bottom;
   animation: chartPulse 1.8s ease-in-out infinite alternate;
 }
 
@@ -1155,7 +1409,7 @@ main,
   margin: 1.4rem 0 1rem;
   gap: 0.65rem;
   color: #ffe1ae;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 1.2rem;
   text-transform: uppercase;
 }
@@ -1195,7 +1449,7 @@ main,
   gap: 0.7rem;
   align-items: center;
   color: #ffe1ae;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 1.08rem;
 }
 
@@ -1203,7 +1457,9 @@ main,
   height: 7px;
   background: linear-gradient(90deg, var(--orange), var(--green));
   box-shadow: 0 0 14px rgba(255, 153, 0, 0.26);
-  animation: routeTrace 1.6s ease-in-out infinite alternate;
+  transform-origin: left;
+  transition: width 420ms ease;
+  animation: routeFill 620ms ease-out both;
 }
 
 .squadPanel {
@@ -1249,7 +1505,7 @@ main,
   background: rgba(3, 4, 3, 0.56);
   color: #e8d0ad;
   cursor: pointer;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   text-align: left;
   text-transform: uppercase;
 }
@@ -1338,7 +1594,7 @@ main,
   border: 1px solid rgba(255, 153, 0, 0.18);
   background: rgba(3, 4, 3, 0.56);
   color: #ffe1ae;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   text-transform: uppercase;
 }
 
@@ -1350,10 +1606,11 @@ main,
 .divisionLadder em {
   color: var(--muted);
   font-style: normal;
+  font-size: 0.85rem;
 }
 
 .prizeCounter {
-  grid-column: 2;
+  grid-column: 1 / -1;
   padding: 1rem;
   border: 1px solid rgba(123, 255, 194, 0.24);
   color: #d7ffe9;
@@ -1395,6 +1652,126 @@ main,
   font-size: clamp(3rem, 9vw, 9.8rem);
 }
 
+/* Newsletter / War Dispatch signup — exact same visual language */
+.newsletter {
+  position: relative;
+  width: min(1260px, calc(100% - 32px));
+  margin-inline: auto;
+  padding: 3.25rem 0 2.5rem;
+  z-index: 2;
+}
+
+.newsletterInner {
+  position: relative;
+}
+
+.newsletterPanel {
+  padding: clamp(1.1rem, 2.6vw, 1.6rem);
+}
+
+.dispatchForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.dispatchInputWrap {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.dispatchInputWrap input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 1rem;
+  border: 1px solid var(--line);
+  background: rgba(3, 4, 3, 0.82);
+  color: #fff0d0;
+  font-family: Inter, Satoshi, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.dispatchInputWrap input::placeholder {
+  font-family: inherit;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.dispatchInputWrap input:focus {
+  border-color: var(--line-hot);
+  background: rgba(255, 153, 0, 0.06);
+  box-shadow: 0 0 0 1px rgba(255, 153, 0, 0.2);
+}
+
+.dispatchInputWrap input::placeholder {
+  color: var(--dim);
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.dispatchInputWrap input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dispatchSuccess {
+  text-align: center;
+  padding: 0.6rem 0.4rem 0.4rem;
+}
+
+.dispatchSuccess strong {
+  display: block;
+  margin: 0.85rem 0 0.35rem;
+  color: #fff6de;
+  font-family: Inter, Satoshi, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.35rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.dispatchSuccess p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: #b9ad9d;
+  font-size: 0.98rem;
+  font-family: Inter, Satoshi, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+.dispatchError {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(255, 52, 40, 0.45);
+  background: rgba(40, 10, 8, 0.6);
+  color: #ff9a8f;
+  font-family: var(--font-label);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.siteFooter {
+  position: relative;
+  z-index: 5;
+  border-top: 1px solid rgba(255, 153, 0, 0.18);
+  background: rgba(3, 4, 3, 0.92);
+  padding: 0.95rem 0;
+  text-align: center;
+  font-family: Inter, Satoshi, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  color: var(--dim);
+}
+
+.siteFooter > div {
+  width: min(1260px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
 @keyframes bootLine {
   to {
     opacity: 1;
@@ -1416,7 +1793,9 @@ main,
 
 @keyframes gridDrift {
   to {
-    background-position: 54px 108px, 54px 108px;
+    background-position:
+      54px 108px,
+      54px 108px;
   }
 }
 
@@ -1467,7 +1846,9 @@ main,
 }
 
 @keyframes glitchFlash {
-  0%, 91%, 100% {
+  0%,
+  91%,
+  100% {
     opacity: 0;
   }
   92% {
@@ -1478,6 +1859,15 @@ main,
   }
   96% {
     opacity: 0.36;
+  }
+}
+
+@keyframes routeFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 
@@ -1520,13 +1910,15 @@ main,
 }
 
 @keyframes borderTrace {
-  45%, 100% {
+  45%,
+  100% {
     transform: translateX(100%);
   }
 }
 
 @keyframes panelShimmer {
-  55%, 100% {
+  55%,
+  100% {
     transform: translateX(100%);
   }
 }
@@ -1564,6 +1956,41 @@ main,
   }
 }
 
+/* Below ~1640px the full rail would overlap the centered 1260px content,
+   so collapse it to just the chapter numbers and expand the whole rail to
+   full labels on hover/focus. */
+@media (max-width: 1640px) {
+  .chapterRail {
+    width: 54px;
+  }
+
+  .chapterRail a {
+    width: 54px;
+    overflow: hidden;
+  }
+
+  .chapterRail a b {
+    opacity: 0;
+    transition: opacity 140ms ease;
+  }
+
+  .chapterRail:hover,
+  .chapterRail:focus-within {
+    width: 196px;
+  }
+
+  .chapterRail:hover a,
+  .chapterRail:focus-within a {
+    width: 196px;
+  }
+
+  .chapterRail:hover a b,
+  .chapterRail:focus-within a b {
+    opacity: 1;
+  }
+}
+
+/* Below this the top nav takes over; hide the rail entirely. */
 @media (max-width: 1180px) {
   .chapterRail {
     display: none;
@@ -1623,7 +2050,6 @@ main,
   .topNav nav {
     display: none;
   }
-
 
   .heroInner {
     padding-top: 96px;
@@ -1805,7 +2231,6 @@ main,
   }
 }
 
-
 /* Mobile layout hardening: keeps console visuals but removes desktop-only spacing and widths. */
 html,
 body,
@@ -1945,7 +2370,7 @@ h3,
 
   .missionRail article {
     min-height: auto;
-    padding: 0.9rem;
+    padding: 4.6rem 0.9rem 0.9rem;
   }
 
   .missionRail article span {
@@ -2143,7 +2568,14 @@ h3,
   .hudFrame,
   .productSurface,
   .posterSurface {
-    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    clip-path: polygon(
+      14px 0,
+      100% 0,
+      100% calc(100% - 14px),
+      calc(100% - 14px) 100%,
+      0 100%,
+      0 14px
+    );
   }
 
   .panelHeader {
