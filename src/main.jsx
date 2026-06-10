@@ -226,10 +226,17 @@ function StatusPill({ children }) {
   );
 }
 
-function MagneticCommandButton({ children, href, variant = "", onClick }) {
+function MagneticCommandButton({ children, href, variant = "", onClick, type, disabled, ...rest }) {
   const Tag = href ? "a" : "button";
   return (
-    <Tag className={`commandButton ${variant}`} href={href} onClick={onClick} type={href ? undefined : "button"}>
+    <Tag 
+      className={`commandButton ${variant}`} 
+      href={href} 
+      onClick={onClick} 
+      type={href ? undefined : (type || "button")}
+      disabled={disabled}
+      {...rest}
+    >
       <span>{children}</span>
       <i className="reticle" />
     </Tag>
@@ -766,9 +773,9 @@ function Newsletter() {
               </StatusPill>
               <strong>Transmission received.</strong>
               <p>You are now tuned to the MemeWarzone frequency. Check your inbox for the confirmation dispatch.</p>
-              <button type="button" className="commandButton" onClick={resetForm} style={{ marginTop: "0.75rem" }}>
+              <MagneticCommandButton onClick={resetForm} style={{ marginTop: "0.75rem" }}>
                 Subscribe another operator
-              </button>
+              </MagneticCommandButton>
             </div>
           ) : (
             <form className="dispatchForm" onSubmit={handleSubmit} noValidate>
@@ -788,7 +795,6 @@ function Newsletter() {
               </div>
 
               <MagneticCommandButton
-                onClick={undefined}
                 variant={status === "loading" ? "active" : ""}
                 type="submit"
                 disabled={status === "loading" || !email.trim()}
